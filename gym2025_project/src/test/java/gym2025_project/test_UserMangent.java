@@ -1,0 +1,209 @@
+package gym2025_project;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
+import io.cucumber.java.en.Then;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import gym2025_project.User;
+import gym2025_project.Admin;
+import gym2025_project.sign_in;
+public class test_UserMangent {
+	
+	
+	User U1=new User();
+	User U2=new User();
+	Admin A= new Admin();
+	activity v1=new activity("rama@gmail.com",3,2,1);
+	sign_in s=new sign_in();
+	
+   
+@Given("I am logged in as an admin")
+public void i_am_logged_in_as_an_admin() {
+	s.sign_in("haya@gmail.com","123hh",A);
+    
+}
+
+@When("when i clic in add account")
+public void when_i_clic_in_add_account() {
+   A.creat_account(U1);
+}
+
+@When("i enter {string} as username")
+public void i_enter_as_username(String string) {
+	  U1.set_username("rama");
+	  U2.set_username("dania");
+}
+
+@When("i enter {int} as age")
+public void i_enter_as_age(Integer int1) {
+	  U1.set_age(21);
+	  U2.set_age(22);
+}
+
+@When("i enter {string} as email")
+public void i_enter_as_email(String string) {
+	 U1.set_email("Rama@gmail.com");
+	 U2.set_email("Rama@gmail.com");
+}
+
+@When("i enter {string} as password")
+public void i_enter_as_password(String string) {
+	U1.set_pass("1311R");
+	U2.set_pass("1111D");
+}
+
+@When("i enter {string} as numberphone")
+public void i_enter_as_numberphone(String string) {
+	 U1.set_numbphone("059986754");
+	 U2.set_numbphone("059986754");
+}
+
+@When("i enter {string} as type of regester")
+public void i_enter_as_type_of_regester(String string) {
+	 U1.set_type("client");
+	 U2.set_type("Instructor");
+}
+
+@Then("it will dispplay {string}")
+public void it_will_dispplay(String string) {
+
+	if(U1.get_type()=="clinet") {
+		   assertTrue(A.msg=="created clinet_account successfully");
+		}
+}
+
+@Then("it will be dispplay {string}")
+public void it_will_be_dispplay(String string) {
+	if(U1.get_type()=="pending instructor") {
+		  assertTrue(A.msg=="created instructor_account successfully");
+} 
+}
+
+@Given("the numberphone {string} already exists")
+public void the_numberphone_already_exists(String string) {
+	A.account_exists(U2);
+}
+
+@When("i clic in add account")
+public void i_clic_in_add_account() {
+A.creat_account(U2);
+}
+
+@Then("I need to seee {string}")
+public void i_need_to_seee(String string) {
+	assertTrue(A.msg=="user already added");
+}
+
+@When("I leave the password field empty")
+public void i_leave_the_password_field_empty() {
+   U1.set_pass(null);
+}
+
+@Then("I should see {string}")
+public void i_should_see(String string) {
+	 assertTrue(A.msg=="we canot creat account becouce miss information");
+}
+
+@When("I leave the username field empty")
+public void i_leave_the_username_field_empty() {
+   U1.set_username(null);
+}
+
+@When("I leave the age field empty")
+public void i_leave_the_age_field_empty() {
+    U1.set_age(null);
+}
+
+@When("I leave the email field empty")
+public void i_leave_the_email_field_empty() {
+    U1.set_email(null);
+}
+
+@When("i leave the phonenumber field empty")
+public void i_leave_the_phonenumber_field_empty() {
+    U1.set_numbphone(null);
+}
+
+@When("i leave the type field empty")
+public void i_leave_the_type_field_empty() {
+    U1.set_type(null);
+}
+
+@Given("the numberphone {string} that i want to delete this account")
+public void the_numberphone_that_i_want_to_delete_this_account(String string) {
+   String num="059986754";
+}
+
+@When("i clic in delete")
+public void i_clic_in_delete() {
+   A.delete_account("059986754");
+}
+
+@Then("want to see {string}")
+public void want_to_see(String string) {
+	assertTrue(A.msg=="user deleted");
+}
+
+@Given("a new instructor registration request with email {string} is pending")
+public void a_new_instructor_registration_request_with_email_is_pending(String string) {
+    A.status_instructor("rama@gmail.com");
+}
+
+@When("I approve the registration request")
+public void i_approve_the_registration_request() {
+   A.approve_instructor("rama@gmail.com");
+}
+
+@Then("the instructor's account should be activated")
+public void the_instructor_s_account_should_be_activated() {
+	assertTrue(A.msg=="you have been accepted");
+}
+
+
+
+@When("I navigate to the user activity dashboard")
+public void i_navigate_to_the_user_activity_dashboard() {
+	A.viewOverallStatistics();
+}
+
+@Then("I should see statistics like total logins, active users, and inactive users")
+public void i_should_see_statistics_like_total_logins_active_users_and_inactive_users() {
+	assertTrue(A.msg=="shown");
+}
+
+@Given("a user with email {string} exists")
+public void a_user_with_email_exists(String string) {
+ A.add_user_activity(v1);
+ 
+}
+
+@When("I view the engagement details for this user")
+public void i_view_the_engagement_details_for_this_user() {
+    A.view_user_activity("rama@gmail.com");
+}
+
+@Then("I should see metrics like number of logins, programs enrolled, and messages sent")
+public void i_should_see_metrics_like_number_of_logins_programs_enrolled_and_messages_sent() {
+	assertTrue(A.msg=="user found");
+}
+
+
+
+@Given("no user with email {string} exists")
+public void no_user_with_email_exists(String string) {
+    activity v2=new activity("samrea@gmail.com",5,8,9);
+}
+
+@When("I try to view the engagement details for this user")
+public void i_try_to_view_the_engagement_details_for_this_user() {
+    A.view_user_activity("samrea@gmail.com");
+}
+
+@Then("I should see an error message {string}")
+public void i_should_see_an_error_message(String string) {
+	assertTrue(A.msg=="user found");
+}
+
+
+}
