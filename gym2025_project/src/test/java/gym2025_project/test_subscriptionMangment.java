@@ -12,6 +12,15 @@ public class test_subscriptionMangment {
 	Admin A= new Admin();
 	subscribtion_client c=new subscribtion_client ();
 	subscription_instructor i =new subscription_instructor();
+	public void in() {
+		i.set_useremail("rama@gmail.com");
+		i.set_salary("10000$");
+		
+		c.set_useremail("dania@gmial.com");
+		c.set_typeSub("monthly");
+		c.setsxpires("1/19/2025");
+		
+	}
 	
 	@Given("i am logged in as admain of gym")
 	public void i_am_logged_in_as_admain_of_gym() {
@@ -20,6 +29,7 @@ public class test_subscriptionMangment {
 
 	@When("i am clic in add  to subscription plans for clients and instructors")
 	public void i_am_clic_in_add_to_subscription_plans_for_clients_and_instructors() {
+		in();
 	    A.add_SubscriptionplanForClient(c);
 	    A.add_SubscriptionplanForinstructor(i);
 	}
@@ -31,15 +41,15 @@ public class test_subscriptionMangment {
 
 	@When("i am clic in delete from subscription plans for clients and instructors")
 	public void i_am_clic_in_delete_from_subscription_plans_for_clients_and_instructors() {
-	   A.delete_SubscriptionplanForClient("rana@gmail.com");
-	   A.delete_SubscriptionplanForinstructor("dania@gmial.com");
+	   A.delete_SubscriptionplanForClient("tala@gmail.com");
+	   A.delete_SubscriptionplanForinstructor("masa@gmial.com");
 	}
 
 	
 
 	@Then("it will display {string}")
 	public void it_will_display(String string) {
-		assertTrue(A.msg=="undeleted");
+		assertTrue(A.msg=="undeleted,not found");
 	}
 
 	

@@ -16,6 +16,7 @@ public static ArrayList<User> instructor=new ArrayList<User>();
 public static ArrayList<activity> Activity=new ArrayList<activity>();
 public static ArrayList<subscribtion_client>subsc_clients =new ArrayList<subscribtion_client>();
 public static ArrayList<subscription_instructor>subsc_instructor =new ArrayList<subscription_instructor>();
+UserFitnessProgram q= new UserFitnessProgram();
 
 public String get_admin_name() {
 	return admin_name;
@@ -91,7 +92,7 @@ public void creat_account(User U) {
 	
       }
 	else 
-		msg="user already added";
+		msg="User already added";
 }
 	else 
 		msg="we canot creat account becouce miss information";
@@ -146,6 +147,8 @@ public void add_user_activity(activity v) {
 	Activity.add(v);
 	System.out.println("user_activity added");
 }
+
+
 public void viewOverallStatistics() {
     int totalLogins = 0;
     int activeUsers = 0;
@@ -167,17 +170,19 @@ public void viewOverallStatistics() {
     System.out.println("Total Logins: " + totalLogins);
     System.out.println("Active Users: " + activeUsers);
     System.out.println("Inactive Users: " + inactiveUsers);
-    msg="showm";
+    
+    msg="shown";
+    
 }
 
 public void view_user_activity(String email) {
-	msg="user not found ";
+	msg="user not found";
 	for (activity activit : Activity) {
     	if(email==activit.getUserEmail()) {
     		 System.out.println(activit.getUserEmail());
     		    System.out.println(activit.getLogins());
     		    System.out.println(activit.getProgramsEnrolled());
-    		    System.out.println(activit.getMessagesSent());
+    		   
     		    msg="user found";
     	}
     	
@@ -213,10 +218,11 @@ public void view_user_activity(String email) {
 	    while (iterator.hasNext()) {
 	        subscription_instructor si = iterator.next();
 	        if (si.get_name().equals(email)) {
-	            iterator.remove();
+	            iterator.remove();  
 	            msg = "deleted";
 	            return;
 	        }
+	       
 	    }
 	    msg = "undeleted,not found";
 	}
@@ -235,33 +241,42 @@ public void view_user_activity(String email) {
 		msg="shown";
 		
 	}
- public void show_wellnessarticles_fromInstructor() {
-		 
-		 
- }
- public void show_helthwellnessarticles() {
+   public void rgestration(User u,program p) {
+	  p.countEnroll++;
 	  
- }
- public void show_feedback() {
-	 msg="feedback shown";
- }
- 
-public void approve_wellnessarticles_fromInstructor() {
-		 msg="the instructor suggestions were approved";
-		 
-	 }
-	
-public void reject_wellnessarticles_fromInstructor() {
-		 msg="the instructor suggestions were rejected";
-		 
-	 }
-	
-public void approve_helthwellnessarticles() {
-		 msg="the helth wellness articleswere approved";
-		 
-	 }
-	
+   }
 
+   public String most_papularprogram(ArrayList<program>list) {
+	   int max=0;
+	   String papular_program=null;
+	   for(program m:list) {
+		   if(m.countEnroll>max) {
+			   max=m.countEnroll;
+			   papular_program=m.get_titel();
+		   }
+	   }
+	   msg="popular program shown";
+	   return   papular_program;
+	  
+   }
+   
+   public void report_progress(UserFitnessProgram u) {
+	   
+	   u.displayProgress();
+	   msg="repot genrated";
+   }
+   
+   public void trackProgram(ArrayList<program>list) {
+		for (program m:list) {
+			if(m.status=="active") {
+				System.out.println("active program:"+m.get_titel());
+			}
+			if(m.status=="completed") {
+				System.out.println("completed program:"+m.get_titel());
+			}
+		}
+		 msg="done";
+	}
 	}
 	
 	

@@ -1,17 +1,19 @@
 package gym2025_project;
 
+import java.util.ArrayList;
+
 public class activity {
 	
 	    private String userEmail;
 	    private int logins;
 	    private int programsEnrolled;
-	    private int messagesSent;
+	   // public static ArrayList<String> programenroll=new ArrayList<String>();
+	   
 	    
-	    public activity(String userEmail, int logins, int programsEnrolled, int messagesSent) {
+	    public activity(String userEmail, int logins, int programsEnrolled) {
 	        this.userEmail = userEmail;
 	        this.logins = logins;
 	        this.programsEnrolled = programsEnrolled;
-	        this.messagesSent = messagesSent;
 	    }
 	    public activity() {
 	    	
@@ -27,9 +29,7 @@ public class activity {
     	  this.programsEnrolled=programenroll;
       }
       
-      public void set_messagesSent(int message) {
-    	  this.messagesSent=message;
-      }
+     
 	    public String getUserEmail() {
 	        return userEmail;
 	    }
@@ -42,8 +42,6 @@ public class activity {
 	        return programsEnrolled;
 	    }
 
-	    public int getMessagesSent() {
-	        return messagesSent;
-	    }
+	   
 	}
 

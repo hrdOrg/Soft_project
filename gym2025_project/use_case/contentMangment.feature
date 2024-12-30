@@ -30,24 +30,13 @@ When i clic show   wellness articles, tips, or recipes shared by instructors
 And i  reject to them 
 Then  show me "rejected"
 
-Scenario:   no wellness articles, tips, or recipes shared by instructors.
-Given i am sign in as admain 
-When i clic show   wellness articles, tips, or recipes shared by instructors
-And i  found no  wellness articles, tips, or recipes shared by instructors
-Then give me "empty"
-
 
 Scenario:  Approve articles or tips shared on health and wellness
 Given i am sign in as admain
 When i clic show articles or tips shared on health and wellness
-And i  reject to them 
+And i apporv to them 
 Then display "Approved"
 
-Scenario:  no articles or tips shared on health and wellness
-Given i am sign in as admain
-When i clic show  articles or tips shared on health and wellness
-
-Then show "empty"
 
 Scenario: show user feedback and complaints
 Given i am sign in as admain

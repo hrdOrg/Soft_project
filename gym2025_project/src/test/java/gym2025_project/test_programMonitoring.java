@@ -1,122 +1,78 @@
 package gym2025_project;
+import static org.junit.Assert.assertTrue;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 public class test_programMonitoring {
+	
+	sign_in s=new sign_in();
+	Admin A= new Admin();
+    instructor v=new instructor();
+    UserFitnessProgram f=new UserFitnessProgram ();
+    public void inti() {
+   	 User R=new User();
+     R.set_username("rama");
+ 	R.set_age(21); 
+ 	R.set_numbphone("09765464");
+ 	R.set_pass("1311");
+ 	R.set_type("pending instructor");
+ 	R.set_email("rama@gmail.com");
+ 	
+ 	program p=new program();
+	p.set_titel("stringlifts");
+	p.set_duration("one month");
+	p.set_level("easy");
+	p.set_goals("losse 5kg");
+	p.set_link("https://www.youtube.com/watch?v=IdjDjxNn9ws");
+	p.set_price("50 NIS");
+ 	
+    f.set_name(R);
+    f.set_programName(p);
+    f.set_gender("F");
+    f.set_completedSessions(5);
+    f.set_totalSessions(5);
+    f.set_fitnessGoal("i want to arrive to normal wheight");
+    f.set_hight(1.67);
+    f.set_weight(80);
+    f.updateStatusprogram(p);
+    }
 
 @Given("i am admin")
 public void i_am_admin() {
-   
-  //  System.out.println("rama");
+	s.sign_in("haya@gmail.com","123hh",A);
 }
 
 @When("i clic to view stitic on the most popular program")
 public void i_clic_to_view_stitic_on_the_most_popular_program() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+    A.most_papularprogram(v.programList);
 }
 
 @Then("must show list of statistics")
 public void must_show_list_of_statistics() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+	 assertTrue(A.msg=="popular program shown");
 }
 
-@When("i found no enrollment")
-public void i_found_no_enrollment() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+@When("i clic to generate report on attendence and client progress")
+public void i_clic_to_generate_report_on_attendence_and_client_progress() {
+	inti();
+    A.report_progress(f);
 }
 
-@Then("must be {string}")
-public void must_be(String string) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+@Then("it must dis report on attendence and client progress")
+public void it_must_dis_report_on_attendence_and_client_progress() {
+	 assertTrue(A.msg=="repot genrated");
 }
 
-@When("i clic to generate report on revenue")
-public void i_clic_to_generate_report_on_revenue() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-@Then("it must dis report on revenue")
-public void it_must_dis_report_on_revenue() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-@When("i clic to generate report on  attendance")
-public void i_clic_to_generate_report_on_attendance() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-@Then("should dis preport on  attendance")
-public void should_dis_preport_on_attendance() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-@When("i clic to generate report on client progress")
-public void i_clic_to_generate_report_on_client_progress() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-@Then("i shoud disp report on  client progress")
-public void i_shoud_disp_report_on_client_progress() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-@When("i clic on track active programs")
-public void i_clic_on_track_active_programs() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+@When("i clic on track active and completed programs")
+public void i_clic_on_track_active_and_completed_programs() {
+	A.trackProgram(v.programList);
+    
 }
 
 @Then("i should dis list of active program")
 public void i_should_dis_list_of_active_program() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+	 assertTrue(A.msg=="done");
 }
-
-@When("i am found no active program")
-public void i_am_found_no_active_program() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-@Then("he  see {string}")
-public void he_see(String string) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-@When("i clic on track completed programs")
-public void i_clic_on_track_completed_programs() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-@Then("i see list of completed program")
-public void i_see_list_of_completed_program() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-@When("i am found no completed program")
-public void i_am_found_no_completed_program() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-@Then("see {string}")
-public void see(String string) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
 
 }

@@ -27,14 +27,14 @@ Feature: Sign In Functionality
 
   Scenario: User enters an incorrect email
     Given a user wants to sign in
-    When they click on sign_in 
-    And they enter "heba@gmai.com" as  his_email
-    And they enter "131122" as his_password
-    Then they see a message "Wrong email. Try again."
+    When they click in sign_in 
+    And they enter "heba@gmai.com" as wrong his_email
+    And they enter "131122" as hispassword
+    Then we see a message "Wrong email. Try again."
 
   Scenario: User enters an incorrect password
     Given a user wants to sign in
-    When they click on sign_in
-    And they enter "dania@gmail.com" as his_email
+    When they click to sign_in
+    And they enter "dania@gmail.com" as hisemail
     And they enter "1311334" as incorrect his_password
-    Then they see a message "Wrong password. Try again."
+    Then you see a message "Wrong password. Try again."

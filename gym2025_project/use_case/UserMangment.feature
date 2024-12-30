@@ -49,7 +49,7 @@ Then it will be dispplay "added instrctor  successfuly "
   And i enter "101100" as password 
   And i enter "0595597868" as numberphone
   And i enter "instuctor" as type of regester
-  Then I need to seee "User already adedd "
+  Then I need to seee "User already adedd"
   
    Scenario: Fail to Add a User with Missing Required Fields
     Given I am logged in as an admin
