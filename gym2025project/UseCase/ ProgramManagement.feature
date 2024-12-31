@@ -107,9 +107,9 @@ Scenario: delete fitness program
  Then I should see "the fitness program is deleted"
  
  Scenario: Set a schedule for an online group session  
- Given I am logged in as an instuctor  
- And a fitness program titled "Yoga Basics" exists  
+ Given I am logged in as an instuctor   
  When I select the "Schedules" section of the program  
+ And a fitness program titled "Yoga Basics" exists 
  And I add a new session with the date "2024-12-10"  
  And I set the time to "6:00 PM"  
  And I choose the session type as "Online"  
@@ -118,9 +118,9 @@ Scenario: delete fitness program
   
 
 Scenario: Set a schedule for an in-person group session  
- Given I am logged in as an instuctor   
- And a fitness program titled "Strength Training" exists  
- When I select the "Schedules" section of the program  
+ Given I am logged in as an instuctor     
+ When I select the "Schedules" section of the program 
+ And a fitness program titled "Strength Training" exists 
  And I add a new session with the date "2024-12-12"  
  And I set the time to "7:30 PM"  
  And I choose the session type as "In-Person"  

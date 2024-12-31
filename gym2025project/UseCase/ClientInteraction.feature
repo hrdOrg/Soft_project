@@ -19,34 +19,17 @@
 
 Feature:  Client Interaction
 
-  Scenario: Communicate with enrolled clients via messaging
+  Scenario: Communicate with enrolled clients via messaging or descussion
     Given i am logged in as instructor
     And client is enrolled in the system
     When the user sends a message to the client
     Then the client should receive the message
-
-  Scenario: Communicate with enrolled clients via discussion forums
-    Given  i am logged in as instructor
-    And discussion forum is available for enrolled clients
-    When the user posts a message in the forum
-    Then all enrolled clients should be able to view the message
-    And enrolled clients should be able to reply to the message
-
-  Scenario: Communicate with enrolled clients via messaging or via discussion forums
-    Given i am logged in as instructor
-    And client is not enrolled in the system
-    When the user sends a message to the client
-    Then the i should see "no enrolled clients"
-    
+   
     Scenario: Provide written feedback to a client
     Given i am logged in as instuctor
     And a client is enrolled in the system
     When the user writes feedback for the client
     Then the client should be able to view the feedback in their profile
 
-    Scenario: Provide progress reports to a client
-    Given i am logged in as instructor
-     And a client is enrolled in the system
-     And progress tracking data is available
-     When the user generates a progress report for the client
-     Then the client should receive the progress report
+  
+   

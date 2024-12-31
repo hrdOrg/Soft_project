@@ -1,114 +1,85 @@
 package gym2025project;
+import static org.junit.Assert.assertTrue;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 public class test_ProgressTracking {
-	@Given("a client is enrolled in a program")
-	public void a_client_is_enrolled_in_a_program() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
-	@Given("the program contains multiple tasks or modules")
-	public void the_program_contains_multiple_tasks_or_modules() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
-	@When("the client completes a task or module")
-	public void the_client_completes_a_task_or_module() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("the system should update the client’s completion rate")
-	public void the_system_should_update_the_client_s_completion_rate() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("the user should be able to view the updated completion rate")
-	public void the_user_should_be_able_to_view_the_updated_completion_rate() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	
+	Admin A=new Admin();
+	client_msg c=new client_msg(); 
+	User U=new User("dania",21,"dania@gmail.com","123#","0598979234","active client");
+	UserFitnessProgram P=new UserFitnessProgram();
+	program p2=new program();
+	
+	
+	public void initial() {
+		p2.set_titel("Janbaz Basics"); 
+		p2.set_duration("three month");
+		p2.set_level("middle");
+		p2.set_goals("losse 8kg");
+		p2.set_link("https://www.youtube.com/watch?v=IdjDjxNn9ws");
+		p2.set_price("150 NIS");
+		P.set_name(U);
+		P.set_programName(p2);
+		P.set_gender("F");
+		P.set_completedSessions(5);
+		P.set_totalSessions(5);
+		P.set_fitnessGoal("i want to arrive to normal wheight");
+		P.set_hight(1.67);
+		P.set_weight(80);
 	}
 
 	@Given("a client is enrolled in a program that tracks attendance")
 	public void a_client_is_enrolled_in_a_program_that_tracks_attendance() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		  A.creat_account(U); 
 	}
 
 	@When("the client attends a session")
 	public void the_client_attends_a_session() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		 initial();
+		 P.completeSession();
 	}
+	
+	@Then("the system should {string}")
+	public void the_system_should(String string) {
+		assertTrue(P.msg=="Update the client’s completion rate");
+	}	
 
-	@Then("the system should log the attendance record")
-	public void the_system_should_log_the_attendance_record() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	//===========================================================
+	
+	@Given("a client enrolled in the system")
+	public void a_client_enrolled_in_the_system() {
+		A.creat_account(U);
 	}
-
-	@Then("the user should be able to view the attendance history of the client")
-	public void the_user_should_be_able_to_view_the_attendance_history_of_the_client() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
-	@Given("the client has opted in to receive reminders")
-	public void the_client_has_opted_in_to_receive_reminders() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
+	
 	@When("the system identifies a suitable time for a reminder")
 	public void the_system_identifies_a_suitable_time_for_a_reminder() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    c.send_motivation_to_client("keep going >_<");
 	}
 
 	@Then("the system should send a motivational reminder to the client")
 	public void the_system_should_send_a_motivational_reminder_to_the_client() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		assertTrue(c.msgg=="motivation sent succesfully");
 	}
+	
+	
+	//===========================================================
 
-	@Given("the system has analyzed the client’s progress and preferences")
-	public void the_system_has_analyzed_the_client_s_progress_and_preferences() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@Given("client enrolled in the system")
+	public void client_enrolled_in_the_system() {
+	    A.creat_account(U);
 	}
-
-	@When("the system identifies a relevant recommendation")
-	public void the_system_identifies_a_relevant_recommendation() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("the system should send the personalized recommendation to the client")
-	public void the_system_should_send_the_personalized_recommendation_to_the_client() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
-	@Given("the system has sent a reminder or recommendation to a client")
-	public void the_system_has_sent_a_reminder_or_recommendation_to_a_client() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
+	
 	@When("the user views the client’s notification history")
 	public void the_user_views_the_client_s_notification_history() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    
+		c.set_Notification("there are msg waiting for you");
 	}
 
 	@Then("the user should see a record of the sent reminder or recommendation")
 	public void the_user_should_see_a_record_of_the_sent_reminder_or_recommendation() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		assertTrue(c.msgg=="notification sent succesfully");
 	}
 
 }

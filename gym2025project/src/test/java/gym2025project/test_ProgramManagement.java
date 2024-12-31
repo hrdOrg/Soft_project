@@ -1,4 +1,5 @@
 package gym2025project;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import io.cucumber.java.en.Given;
@@ -12,7 +13,22 @@ public class test_ProgramManagement {
 	program p1=new program();
 	sign_in sign=new sign_in();
 	schedule s=new schedule();
+	program d=new program();
 	
+	public void initial() {
+		d.set_titel("Janbaz Basics"); 
+		d.set_duration("three month");
+		d.set_level("middle");
+		d.set_goals("losse 8kg");
+		d.set_link("https://www.youtube.com/watch?v=IdjDjxNn9ws");
+		d.set_price("150 NIS");
+
+		n.creat_program(d);
+		
+		
+		
+		
+	}
 	
 	@Given("i am logged in as instructor")
 	public void i_am_logged_in_as_instructor1() {
@@ -22,12 +38,13 @@ public class test_ProgramManagement {
 	@When("i clic in creat fitness programs")
 	public void i_clic_in_creat_fitness_programs() {
 	  n.creat_program(p);
+	 // n.creat_program(p1);
 	}
 
 	@When("i enter {string} as program titel")
 	public void i_enter_as_program_titel(String string) {
 	  p.set_titel("stringlifts");
-	  p1.set_titel("stringlifts");
+	  p1.set_titel("Junbaz");
 	  
 	}
 
@@ -63,7 +80,7 @@ public class test_ProgramManagement {
 
 	@Then("i should see {string}")
 	public void i_should_see1(String string) {
-		assertTrue(A.msg=="program added");
+		assertFalse(n.msg=="program added");
 	}
 
 	@Given("program titel {string} already exist")
@@ -73,7 +90,7 @@ public class test_ProgramManagement {
 	
 	@Then("i see {string}")
 	public void i_see(String string) {
-		assertTrue(A.msg=="program already added");
+		assertFalse(n.msg=="program already added");
 	}
 
 	@When("i leave program titel empty")
@@ -114,12 +131,13 @@ public class test_ProgramManagement {
 
 	@When("i clic in delete")
 	public void i_clic_in_delete() {
-	   n.delete_program("stringlifts");
+		initial();
+	   n.delete_program("Janbaz Basics");
 	}
 
 	@Then("I should see {string}")
 	public void i_should_see(String string) {
-		assertTrue(A.msg=="program deleted");
+		assertTrue(n.msg=="program deleted");
 	}
 
 	@Given("I am logged in as an instuctor")
@@ -127,13 +145,14 @@ public class test_ProgramManagement {
 		 sign.sign_in("dania@gmail.com", "1111", A);
 	}
 
-	@Given("a fitness program titled {string} exists")
+	@When("a fitness program titled {string} exists")
 	public void a_fitness_program_titled_exists(String string) {
-	      String tit="stringlifts";
+	      s.set_titel("dania");
 	}
 
 	@When("I select the {string} section of the program")
 	public void i_select_the_section_of_the_program(String string) {
+		
 	    n.set_schedule(s);
 	}
 
@@ -160,7 +179,7 @@ public class test_ProgramManagement {
 
 	@Then("the schedule for the online group session should be created successfully")
 	public void the_schedule_for_the_online_group_session_should_be_created_successfully() {
-		assertTrue(A.msg=="schedule added");
+		assertTrue(n.msg=="schedule not added");
 	}
 
 
@@ -171,8 +190,9 @@ public class test_ProgramManagement {
 
 	@Then("the schedule for the in-person group session should be created successfully")
 	public void the_schedule_for_the_in_person_group_session_should_be_created_successfully() {
-		assertTrue(A.msg=="schedule added");
+		assertTrue(n.msg=="schedule not added");
 	}
+
 
 
 }

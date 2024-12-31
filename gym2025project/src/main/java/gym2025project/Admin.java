@@ -24,6 +24,24 @@ public String get_admin_pass() {
 	return pass;
 }
 
+public void rgestration(User u,program p) {
+	  p.countEnroll++;
+	  
+ }
+
+ public String most_papularprogram(ArrayList<program>list) {
+	   int max=0;
+	   String papular_program=null;
+	   for(program m:list) {
+		   if(m.countEnroll>max) {
+			   max=m.countEnroll;
+			   papular_program=m.get_titel();
+		   }
+	   }
+	   return   papular_program;
+ }
+	
+
 public boolean account_exists (User U1) {
 	boolean exsist=false;
 	for(User u:client) {
