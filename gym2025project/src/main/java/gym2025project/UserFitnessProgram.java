@@ -114,8 +114,10 @@ public class UserFitnessProgram {
    public void updateStatusprogram(program p) {
 	    if (completedSessions < totalSessions) {
           p.status="active";
+          
         } else {
         	 p.status="completed";
+        	 
         }  
     } 
    
