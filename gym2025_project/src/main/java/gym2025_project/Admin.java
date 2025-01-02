@@ -8,7 +8,7 @@ import gym2025_project.activity;
 public class Admin 
  {
 	
-public	String msg = null;
+public	String msg ;
 private String admin_name ="haya@gmail.com";
 private String pass="123hh";
 public static ArrayList<User> client=new ArrayList<User>();
@@ -28,12 +28,12 @@ public String get_admin_pass() {
 public boolean account_exists (User U1) {
 	boolean exsist=false;
 	for(User u:client) {
-		if(u.get_numbphone()==U1.get_numbphone()) {
+		if(u.get_numbphone().equals(U1.get_numbphone())) {
 		exsist=true;
 		}	
 	}
 	for(User u:instructor) {
-		if(u.get_numbphone()==U1.get_numbphone()) {
+		if(u.get_numbphone().equals(U1.get_numbphone())) {
 		exsist=true;
 		}	
 	}
@@ -43,27 +43,27 @@ return exsist;
 
 public boolean miss_info(User u) {
 	boolean miss=false;
-	if (u.get_username()==null) {
+	if (u.get_username().equals("")) {
 		System.out.println("username is required. Please enter a username.");
 		miss=true;
 	}
-	if (u.get_pass()==null) {
+	if (u.get_pass().equals("")) {
 		System.out.println("pass is required. Please enter a pass.");
 		miss=true;
 	}
-	if(u.get_email()==null) {
+	if(u.get_email().equals("")) {
 		System.out.println("email is required. Please enter a email");
 		miss=true;
 	}
-    if(u.get_numbphone()==null) {
+    if(u.get_numbphone().equals("")) {
     	System.out.println("numbphone is required. Please enter a numbphone");
 		miss=true;
     }
-    if(u.get_type()==null) {
+    if(u.get_type().equals("")) {
     	System.out.println("type is required. Please enter a type.");
 		miss=true;
     }
-    if(u.get_age()==null) {
+    if(u.get_age().equals(0)) {
     	System.out.println("age is required. Please enter a age.");
 		miss=true;
     }
@@ -75,27 +75,35 @@ public boolean miss_info(User u) {
 public void creat_account(User U) {
 	if(!(miss_info(U))){
 	if(!(account_exists(U))) {
-	if (U.get_type()=="active client") {
+	if (U.get_type().equals("active client")) {
 		client.add(U);
+		System.out.println("created clinet_account successfully");
 		this.msg="created clinet_account successfully";
 	}
-	else if (U.get_type()=="inactive client") {
+	else if (U.get_type().equals("inactive client")){
 		client.add(U);
+		System.out.println("created clinet_account successfully");
 		this.msg="created clinet_account successfully";
 	}
-	else if (U.get_type()=="pending instructor") {
+	else if (U.get_type().equals("pending instructor")) {
          instructor.add(U);
+         System.out.println("created instructor_account successfully");
          this.msg="created instructor_account successfully";
 	}
-	else
+	else {
 		this.msg="not created";
-	
+	 System.out.println("not created");
+	}
       }
-	else 
+	else {
 		msg="User already added";
+	 System.out.println("User already added");
+	}
 }
-	else 
+	else { 
 		msg="we canot creat account becouce miss information";
+	System.out.println("we canot creat account becouce miss information");
+	}
 }
 
 public void delete_account(String num) {
@@ -106,6 +114,7 @@ public void delete_account(String num) {
         if (clientIterator.next().get_numbphone().equals(num)) {
             clientIterator.remove();
             msg = "user deleted";
+            System.out.println("user deleted");
         }
     }
 
@@ -114,6 +123,7 @@ public void delete_account(String num) {
         if (instructorIterator.next().get_numbphone().equals(num)) {
             instructorIterator.remove();
             msg = "user deleted";
+            System.out.println("user deleted");
         }
     }
 }
@@ -145,8 +155,9 @@ public void approve_instructor(String e) {
 }
 public void add_user_activity(activity v) {
 	Activity.add(v);
-	System.out.println("user_activity added");
+	//System.out.println("user_activity added");
 }
+
 
 
 public void viewOverallStatistics() {
@@ -178,7 +189,7 @@ public void viewOverallStatistics() {
 public void view_user_activity(String email) {
 	msg="user not found";
 	for (activity activit : Activity) {
-    	if(email==activit.getUserEmail()) {
+    	if(email.equals(activit.getUserEmail())) {
     		 System.out.println(activit.getUserEmail());
     		    System.out.println(activit.getLogins());
     		    System.out.println(activit.getProgramsEnrolled());

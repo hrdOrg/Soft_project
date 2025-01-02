@@ -18,57 +18,58 @@ public void sign_in (String name,String pass,Admin a) {
 this.pass=pass;
 this.user_email=name;
 for(User c:a.client) {
-	if(c.get_email()==name && c.get_pass()==pass) {
+	if(c.get_email().equals(name) && c.get_pass().equals(pass)) {
 		a.msg="client logged in successfully";
 		System.out.println("client logged in successfully");
 		return;
 	}
-	else if (c.get_email()!=name && c.get_pass()==pass) {
+	else if (!c.get_email().equals(name) && c.get_pass().equals(pass)){
 		a.msg="Wrong  email_c. Try again";	
 		System.out.println("Wrong email_c. Try again");
 		return;
 	}
-	else if (c.get_email()==name && c.get_pass()!=pass) {
+	else if (c.get_email().equals(name) && !c.get_pass().equals(pass)) {
 		a.msg="Wrong pass_c. Try again";	
 		System.out.println("Wrong pass_c. Try again");
 		return;
 	}
 }
 	for(User I:a.instructor) {
-		if(I.get_email()==name && I.get_pass()==pass) {
+		if(I.get_email().equals(name) && I.get_pass().equals(pass)) {
 			a.msg="instructor logged in successfully";
 			System.out.println("instuctor logged in successfully");
 			return;
 		}
-		else if (I.get_email()!=name && I.get_pass()==pass) {
+		else if (!I.get_email().equals(name) && I.get_pass().equals(pass)) {
 			a.msg="Wrong email_I. Try again";	
 			System.out.println("Wrong email_I. Try again");
 			return;
 		}
-		else if (I.get_email()==name && I.get_pass()!=pass) {
+		else if (I.get_email().equals(name) && !I.get_pass().equals(pass)) {
 			a.msg="Wrong pass_I. Try again";	
 			System.out.println("Wrong pass_I. Try again");
 			return;
 		}
 	}
 	
-	if(user_email==a.get_admin_name()&& pass==a.get_admin_pass()) {
+	if(user_email.equals(a.get_admin_name())&& pass.equals(a.get_admin_pass())) {
 		a.msg="Admin logged in successfully";
 		System.out.println("Admin logged in successfully");
 		return;
 	}
-	else if(user_email!=a.get_admin_name()&& pass==a.get_admin_pass()) {
+	else if(!user_email.equals(a.get_admin_name())&& pass.equals(a.get_admin_pass())) {
 		a.msg="Wrong email_A. Try again";	
 		System.out.println("Wrong email_A. Try again");
 		return;
 		
 	}
-	else if(user_email==a.get_admin_name()&& pass!=a.get_admin_pass()) {
+	else if(user_email.equals(a.get_admin_name())&& ! pass.equals(a.get_admin_pass())) {
 		a.msg="Wrong pass_A Try again";	
 		System.out.println("Wrong pass_A. Try again");
 		return;
 		
 	}
+	
 		
 }
 	

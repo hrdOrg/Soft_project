@@ -2,12 +2,24 @@ package gym2025_project;
 
 public class User {
 private String username;
-private Integer age;
+private int age;
 private String email;
 private String pass;
 private String numbphone;
 private String type;
 
+public User(String user,int age,String email,String pass,String numbphone,String type) {
+	
+	this.username=user;
+	this.age=age;
+	this.email=email;
+	this.pass=pass;
+	this.numbphone=numbphone;
+	this.type=type;
+}
+public User() {
+	
+}
 public void set_username(String name) {
 	this.username=name;
 }

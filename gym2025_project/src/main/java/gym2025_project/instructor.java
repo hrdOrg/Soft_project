@@ -8,8 +8,12 @@ public class instructor {
 	public static ArrayList<program> programList=new ArrayList<program>();
 	public static ArrayList<schedule> scheduleList=new ArrayList<schedule>();
 	public static ArrayList<String> Notification=new ArrayList<String>();
+	public static ArrayList<UserFitnessProgram> useFitnessProgram=new ArrayList<UserFitnessProgram>();
 	
 	
+	public void add_userFatnessProgram(UserFitnessProgram u) {
+		useFitnessProgram.add(u);
+	}
 	
 	public boolean program_exists (program P1) {
 		boolean exsist=false;
