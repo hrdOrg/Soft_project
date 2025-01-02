@@ -5,8 +5,29 @@ Feature: Client Features in Fitness Management System
 	
 	 Scenario: Client customizes their profile
     Given the client is logged in
-    When the client updates their profile with personal details like age, fitness goals, and dietary preferences
-    Then the system should save the client's profile information successfully
+    When the client add their profile with personal details like "age"
+    Then the system should add the client's "age" successfully
+
+    Scenario: Client customizes their profile
+    Given the client is logged in
+    When the client add their profile with personal details like  "fitness goals"
+    Then the system should add the client's "fittness goals" successfully
+    
+    Scenario: Client customizes their profile
+    Given the client is logged in
+    When the client delete their profile with personal details like  "fitness goals"
+    Then the system should delete the client's "fittness goals" successfully
+    
+    Scenario: Client customizes their profile
+    Given the client is logged in
+    When the client add their profile with personal details like  "dietary preferences"
+    Then the system should add the client's "dietary preferences" successfully
+
+Scenario: Client customizes their profile
+    Given the client is logged in
+    When the client delete their profile with personal details like "dietary preferences"
+    Then the system should delete the client's "dietary preferences" successfully
+
 
   Scenario: Client manages their privacy settings
     Given the client is logged in
