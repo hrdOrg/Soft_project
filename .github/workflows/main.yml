@@ -10,51 +10,28 @@ jobs:
     name: Build and analyze
     runs-on: ubuntu-latest
     steps:
-      # 1. Checkout the code
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Ensure full clone for better analysis
-
-      # 2. Set up JDK 17
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: 17
-          distribution: 'zulu'
-
-      # 3. Cache SonarQube packages
+          distribution: 'zulu' # Alternative distribution options are available.
       - name: Cache SonarQube packages
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
-
-      # 4. Cache Maven dependencies
       - name: Cache Maven packages
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-
-      # 5. Build the project and generate Jacoco report
-      - name: Build, Test, and Generate Jacoco Report
-        run: mvn -B clean verify jacoco:prepare-agent jacoco:report
-
-      # 6. Publish Jacoco coverage report as an artifact (optional)
-      - name: Upload Jacoco Report
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: jacoco-report
-          path: target/site/jacoco
-
-      # 7. Run SonarQube analysis
-      - name: SonarQube analysis
+      - name: Build and analyze
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed for PR information
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}    # Add this token in the GitHub repository secrets
-        run: mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-          -Dsonar.projectKey=hrdOrg_Soft_project \
-          -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B   jacoco:prepare-agent   verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar jacoco:report -Dsonar.projectKey=hrdOrg_Soft_project
