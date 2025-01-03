@@ -1,13 +1,14 @@
 package softwareProject;
 
 public class program {
-	
 	 private String programtitel;
 	 private String duration;
 	 private String difficultylevel;
 	 private String goals;
 	 private String price;
 	 private String link;
+	 public int countEnroll = 0;
+	 public String status="active";
 	 
 	 public void set_titel(String t) {
 		 this.programtitel=t;
@@ -53,7 +54,9 @@ public class program {
 		 return price;
 	 }
 	 
-	 public String get_link() {	 
+	 public String get_link() {
 		 return link;
 	 }
-}
+	 
+
+	}

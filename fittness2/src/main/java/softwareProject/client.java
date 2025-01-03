@@ -3,7 +3,8 @@ package softwareProject;
 import java.util.ArrayList;
 
 public class client {
-
+	
+	public String msg=null;
 	private Integer age;
 	private String name;
 	private String gender;
@@ -17,9 +18,12 @@ public class client {
 	
 	private ArrayList<String> achievements = new ArrayList<String>();
 	
+	public ArrayList <program> filterdP=new ArrayList<program>();
+	
 	private double weight;
 	private double BMI;
 	private double height;
+	private int attendance; 
 	//private String attendance;
 	
 	public client() {
@@ -33,6 +37,16 @@ public class client {
 		this.height=h;
 		this.weight=w;
 		
+	}
+	
+	public void setAttendance(int a) {
+		this.attendance=a;
+		
+	}
+	
+	public int getAttendance() {
+		msg="this is your attendance";
+		return this.attendance;
 	}
 	
 	public void setGender(String g) {
@@ -64,7 +78,10 @@ public class client {
 			System.out.println("there is no achievements");
 			return null;
 		}
-		else return this.achievements;
+		else {
+			msg="this is your Achievements";
+			return this.achievements;
+			}
 	}
 	
 	public void delAchievements(String A) {
@@ -81,6 +98,7 @@ public class client {
 	}
 	
 	public double getWeight() {
+		msg="this is your weight";
 		return this.weight;
 	}
 	
@@ -102,6 +120,7 @@ public class client {
 	
 	public void calBMI(){
 		this.BMI=this.weight/(this.height*this.height);//the height in meters
+		msg="BMI is calculated";
 	}
 	
 	public double getBMI() {
@@ -120,6 +139,7 @@ public class client {
 		if(!this.fittnessGoals.contains(fit)) {
 			this.fittnessGoals.add(fit);
 			System.out.println("the goal is added");
+			msg="the goal is add";
 		}
 		else System.out.println("you have this goal already");
 	}
@@ -144,6 +164,7 @@ public class client {
 		if(!this.dietary.contains(diet)) {
 			this.dietary.add(diet);
 			System.out.println("this dietary reference is added");
+			msg="the dietary is add";
 		}
 		else System.out.println("you have this dietary reference already");
 	}
@@ -202,59 +223,60 @@ public class client {
 		
 	}*/
 	
-	public ArrayList<program> filterD(String n ) {
-
-		//"Beginner""Intermediate""Advanced"
-		ArrayList<program> P=new ArrayList<program>();
-		String p;
+	public ArrayList<program> filterD(String n ,ArrayList<program> P) {
 		
-		for (int i=0; i<programs.size();i++) {
-			p=P.get(i).get_level();
-			if (p==n) {
-				P.add(programs.get(i));
-			}
-		}
-		if (P.isEmpty())
-			System.out.println("there is no program with this requirement");
-		
-		return P;
-	}
-	
-	public ArrayList<program> filterF(String n) {
-		//"weight loss "muscle building" "flexibility"
-		ArrayList<program> P=new ArrayList<program>();
-		String p;
-		
-		for (int i=0; i<programs.size();i++) {
+		for(program h:P) {
+			//p=P.get(i).get_level();
 			
-			p=P.get(i).get_goals();
-			if (p==n) {
-				P.add(programs.get(i));
+			if (h.get_level().equals(n)) {
+				filterdP.add(h);
+				msg="the program is added(difficulty)" ;
+				System.out.println(msg);
 			}
 		}
-		if (P.isEmpty())
-			System.out.println("there is no program with this requirement");
-		return P;
+		if (filterdP.isEmpty()) {
+			msg="there is no program with this requirement";
+			System.out.println("there is no program with this requirement");}
+		
+		return filterdP;
+	}
+	
+	public ArrayList<program> filterF(String n,ArrayList<program> P) {
+		
+		for (program h :P) {
+			
+			
+			if (h.get_goals().equals(n)) {
+				filterdP.add(h);
+				msg="the program is added(focus area) " ;
+				System.out.println(msg);
+			}
+		}
+		if (filterdP.isEmpty()) {
+			msg="there is no program with this requirement";
+			System.out.println("there is no program with this requirement");}
+		return filterdP;
 		
 	}
 	
-	public ArrayList<program> filters(String F,String D) {
+	public ArrayList<program> filters(String F,String D,ArrayList<program> P) {
 		//هاد الفنكشن ممكن اعملو بطريقة تانية بحيت انادي ع اللاتر الي فوق و اشوف شو هن البرامج المشتركة و ارجعهم 
-		ArrayList<program> P=new ArrayList<program>();
-		String f;
-		String d;
-		for (int i=0; i<programs.size();i++) {
-			f=P.get(i).get_goals();
-			d=P.get(i).get_level();
-			if (f==F) {
-				if(d==D)
-				P.add(programs.get(i));
+		
+		for (program h:P) {
+			
+			if (h.get_goals().equals(F)) {
+				if(h.get_level().equals(D)) {
+				filterdP.add(h);
+				msg="the program is added(focus area&difficulty) " ;
+				System.out.println(msg);
+				}
 			}
 		}
 		/*"weight loss "muscle building" "flexibility"*/
-		if (P.isEmpty())
-			System.out.println("there is no program with this requirements");
-		return P;
+		if (filterdP.isEmpty()) {
+			msg="there is no program with this requirement";
+			System.out.println("there is no program with this requirements");}
+		return filterdP;
 		
 	}
 	
@@ -270,6 +292,7 @@ public class client {
 	}
 	
 	public ArrayList<program> getprograms(){
+		msg="this is your programs";
 		return clientP;
 	}
 	
@@ -277,6 +300,7 @@ public class client {
 		if(!this.clientP.contains(p)) {
 			this.clientP.add(p);
 			System.out.println("the program is added");
+			msg="the program is enrolled";
 		}
 		else System.out.println("you have this achievement already");
 			

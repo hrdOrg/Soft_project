@@ -2,41 +2,15 @@ package softwareProject;
 
 import java.util.ArrayList;
 
- class Feed{
-	public int prog;
-	public String instr;
-	public String feedb;
-	public boolean Handle=false;
-	
-	public Feed() {
-		
-	}
-	public Feed(int p, String i, String f) {
-		this.prog=p;
-		this.instr=i;
-		this.feedb=f;
-	}
-	
-}
+ 
 
-class improvement{
-	public String inst;
-	public String imp;
-	public boolean HandleImprov=false;
-	
-	public improvement() {
-		
-	}
-	public improvement(String i, String m) {
-		this.inst=i;
-		this.imp=m;
-	}
-}
+
 
 public class feedback {
 	
+	public String massage;
 	private ArrayList<Feed> feed = new ArrayList<Feed>(); 
-	private ArrayList<Integer> rate = new ArrayList<Integer>();
+	private ArrayList<rate> rate = new ArrayList<rate>();
 	private ArrayList<Feed> Hist = new ArrayList<Feed>(); 
 	
 	private ArrayList<improvement> improv = new ArrayList<improvement>();
@@ -46,6 +20,7 @@ public class feedback {
 		m.imp=i;
 		m.inst=n;
 		this.improv.add(m);
+		massage ="improvement is add";
 		
 	}
 	
@@ -60,33 +35,36 @@ public class feedback {
 		return improv.getFirst();
 	} 
 	
-	public void setFeedback(int p, String ins, String fee) {
+	public void setFeedback(String p, String ins, String fee) {
 		Feed e= new Feed();
 		e.feedb=fee;
 		e.instr=ins;
 		e.prog=p;
 		this.feed.add(e);
+		massage="the feedback is add";
 	
 	}
 	public Feed getFeedback() {
 		return this.feed.getFirst();
 	}
 	
-	public void setRate(int r) {
-		this.rate.add(r);
+	public void setRate(int r,String n) {
+		rate R=new rate();
+		R.rate=r;
+		R.clientN=n;
+		this.rate.add(R);
+		massage="the rate is add";
 	}
-	public int getRate() {
+	public rate getRate() {
 		return rate.getFirst();
 	}
-	public int getRateIndex(int i) {
-		return rate.get(getRateIndex(i));
-	}
+	
 	
 	public double avgRate() {
 		int avg=0;
 		int size = rate.size();
 		for (int i=0; i<size;i++)
-		avg += rate.get(i);
+		avg += rate.get(i).rate;
 		return (double)avg/(double)size;
 		
 	}
