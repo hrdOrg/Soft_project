@@ -2,7 +2,7 @@ package softwareProject;
 
 import java.util.ArrayList;
 
-class Feed{
+ class Feed{
 	public int prog;
 	public String instr;
 	public String feedb;
