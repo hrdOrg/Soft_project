@@ -29,3 +29,4 @@ Feature: Client Features in Fitness Management System
     Then the system should display THE programs matching the selected filters5 "muscle building"
     
     
+    

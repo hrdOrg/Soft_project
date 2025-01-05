@@ -19,20 +19,17 @@ public class Testfilters {
 	public instructor n = new instructor();
 	public ArrayList<program> allPrograms = new ArrayList<program>();
     public ArrayList<program> filteredPrograms = new ArrayList<program>();
-	public program testprogram1 = new program();
-	public program testprogram2 = new program();
-	public program testprogram3 = new program();
-	public program testprogram4 = new program();
-	public program testprogram5 = new program();
+	//public program testprogram1 = new program();
+	//public program testprogram2 = new program();
+	//public program testprogram3 = new program();
+	//public program testprogram4 = new program();
+	//public program testprogram5 = new program();
 	
 	program d=new program();
 	program h=new program();
+	
 	public void first(){
-		
-		
-		
-		
-		
+	
 			d.set_titel("Janbaz Basics"); 
 			d.set_duration("three month");
 			d.set_level("Intermediate");

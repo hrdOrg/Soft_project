@@ -5,8 +5,7 @@ public class ClientMenu {
 	public static void main(String[] args) {
 		 Scanner scanner = new Scanner(System.in);
 	        client client = new client(); // Create an instance of the client class
-
-	        int choice;
+	        int choice; 
 	     // Display the menu
             System.out.println("\n=== Client Menu ===");
             System.out.println("1. Set Name");
@@ -29,6 +28,13 @@ public class ClientMenu {
             System.out.println("18. View Achievements");
             System.out.println("19. Delete Achievement");
             System.out.println("20. Calculate BMI");
+            /*
+            System.out.println("21. add rate");
+            System.out.println("22. add improvement");
+            System.out.println("23. add feedback");
+            System.out.println("24. get avgrate");
+            */
+            
             System.out.println("21. Exit");
             System.out.print("Enter your choice: ");
 
