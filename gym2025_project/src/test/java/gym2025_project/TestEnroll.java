@@ -30,14 +30,14 @@ public class TestEnroll {
 		    	System.out.println("inside the Enroll");
 		    }
 
-		    @When("THE client SELECT a program AND enrolls in it")
-		    public void the_client_select_a_program_and_enrolls_in_it() {
-		    	testclient.enroll(h);
-		       
+		    @When("the client selects a program and enrolls in it")
+		    public void the_client_selects_a_program_and_enrolls_in_it() {
+		    	 testclient.enroll(h);
 		    }
-		    @Then("The System Should confirm the client's enrollment in the program")
+
+		    @Then("the system should confirm the client's enrollment in the program")
 		    public void the_system_should_confirm_the_client_s_enrollment_in_the_program() {
-		    	assertTrue(testclient.msg.equals("the program is enrolled"));
+		    	 assertTrue(testclient.msg.equals("the program is enrolled"));
 		    }
 
 		    @Given("the CLIENT is enrolled in a program")
@@ -45,14 +45,12 @@ public class TestEnroll {
 		    	System.out.println("inside the Enroll");
 		    }
 
-		  
-
-		    @When("THE CLIENT VIEWS the program schedule")
+		    @When("the client views the program schedule")
 		    public void the_client_views_the_program_schedule() {
 		    	testclient.getprograms();
 		    }
-		 
-		    @Then("the system should display THE PROGRAMS")
+
+		    @Then("the system should display the programs")
 		    public void the_system_should_display_the_programs() {
 		    	assertTrue(testclient.msg.equals("this is your programs"));
 		    }

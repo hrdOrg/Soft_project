@@ -49,7 +49,87 @@ public void init2() {
 		U5.set_email("dodo@gmail.com");
 		//A.creat_account(U5);
 }
-   
+User V=new User();
+
+@Given("I WANT TO FIIL USER INFO")
+ public void i_want_to_fiil_user_info() {
+ System.out.println("i want fill my info");
+}
+
+@When("I CHOICE FILLINFO")
+ public void i_choice_fillinfo() {
+ A.fill_info(V);
+}
+
+@Then("THE INFO HASS BEEN FILLED")
+   public void the_info_hass_been_filled() {
+	 assertTrue(A.msg.equals("your data fiiled"));
+}
+//=========================================================================================
+@Given("I WANT TO UPDATE")
+public void i_want_to_update() {
+   System.out.println("i want update");
+}
+
+@When("I CLIC to UPDATE1")
+public void i_clic_to_update1() {
+    initi();
+    A.update("0999765464","name");
+}
+
+@Then("THE NAME must BE updated")
+public void the_name_must_be_updated() {
+	assertTrue(A.msg.equals("name updated"));
+}
+
+
+@When("I CLIC to UPDATE2")
+public void i_clic_to_update2() {
+	 initi();
+	    A.update("0999765464","email");
+}
+
+@Then("THE  EmAIL must BE updated")
+public void the_em_ail_must_be_updated() {
+	assertTrue(A.msg.equals("email updated"));
+}
+
+@When("I CLIC to UPDATE3")
+public void i_clic_to_update3() {
+	 initi();
+	    A.update("0999765464","pass");
+}
+
+@Then("THE  PaSs must BE updated")
+public void the_pa_ss_must_be_updated() {
+	assertTrue(A.msg.equals("pass updated"));
+}
+
+
+
+@When("I CLIC to UPDATE5")
+public void i_clic_to_update5() {
+	 initi();
+	    A.update("0999765464","age");
+}
+
+@Then("THE  AgE must BE updated")
+public void the_ag_e_must_be_updated() {
+	assertTrue(A.msg.equals("age updated"));	 	  
+}
+
+@When("I CLIC to UPDATE6")
+public void i_clic_to_update6() {
+	 initi();
+	    A.update("0999765464","type");
+}
+
+@Then("THE  TyPe  must BE updated")
+public void the_ty_pe_must_be_updated() {
+	assertTrue(A.msg.equals("type updated"));
+	
+}
+//==========================================================================
 @Given("I am logged in as an admin")
 public void i_am_logged_in_as_an_admin() {
 	s.sign_in("haya@gmail.com","123hh",A);

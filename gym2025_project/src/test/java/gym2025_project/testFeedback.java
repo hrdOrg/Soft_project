@@ -44,7 +44,7 @@ public class testFeedback {
 
     @When("the client {string} a the program")
     public void the_client_a_the_program(String action) {
-        testFeedback.setRate(5, "Rama");
+        testFeedback.setRate(5, "program 1");
     }
 
     @Then("the system should save the {string} for the program")

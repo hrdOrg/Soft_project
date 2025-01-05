@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import gym2025_project.subscribtion_client;
 import gym2025_project.subscription_instructor;
 import java.util.Iterator;
+import java.util.Scanner;
+
 import gym2025_project.User;
 import gym2025_project.activity;
 public class Admin 
@@ -17,12 +19,138 @@ public static ArrayList<activity> Activity=new ArrayList<activity>();
 public static ArrayList<subscribtion_client>subsc_clients =new ArrayList<subscribtion_client>();
 public static ArrayList<subscription_instructor>subsc_instructor =new ArrayList<subscription_instructor>();
 UserFitnessProgram q= new UserFitnessProgram();
+Scanner scanner=new Scanner(System.in);
+
+public void fill_info(User u) {
+	
+	
+    System.out.println("Enter your username: ");
+    String nameee = scanner.nextLine();
+    u.set_username(nameee);
+
+    System.out.println("Enter your age: ");
+    int age = scanner.nextInt();
+    u.set_age(age);
+
+    System.out.println("Enter your email: ");
+    scanner.nextLine();
+    String emailll = scanner.nextLine();
+    u.set_email(emailll);
+
+    System.out.println("Enter your password: ");
+    String pass = scanner.nextLine();
+    u.set_pass(pass);
+
+    System.out.println("Enter your phone number: ");
+    String number = scanner.nextLine();
+    u.set_numbphone(number);
+
+    System.out.println("Enter your type: ");
+    String type = scanner.nextLine();
+    u.set_type(type);
+    
+	msg="your data fiiled";
+}
 
 public String get_admin_name() {
 	return admin_name;
 }
 public String get_admin_pass() {
 	return pass;
+}
+
+public void update(String f,String w) {
+    boolean userFound = false;
+
+    for (User u : client) {
+        if (u.get_numbphone().equals(f)) {
+        	
+        	if(w.equals("name")) {
+            System.out.println("Enter new username:");
+            String NA = scanner.nextLine();
+            u.set_username(NA);
+            msg="name updated";
+        	}
+            else if(w.equals("email")) {
+            	System.out.println("Enter new email:");
+	            String NA = scanner.nextLine();
+	            u.set_email(NA);
+	            msg="email updated";
+            }
+            else if(w.equals("pass")) {
+            	  System.out.println("Enter new pass:");
+		            String NA = scanner.nextLine();
+		            u.set_pass(NA);
+		            msg="pass updated";
+            }
+            
+        	
+            else if(w.equals("type")) {
+            	System.out.println("Enter new type:");
+	            String NA = scanner.nextLine();
+	            u.set_type(NA);
+	            msg="type updated";
+        }
+        	
+            else if(w.equals("age")) {
+            	 System.out.println("Enter new age:");
+		            int NA = scanner.nextInt();
+		            u.set_age(NA);
+		            msg="age updated";
+         }
+        	
+            userFound = true;
+           
+        }
+        
+        
+    }
+
+    if (!userFound) {
+        for (User m : instructor) {
+            if (m.get_numbphone().equals(f)) {
+            	if(w.equals("name")) {
+                    System.out.println("Enter new username:");
+                    String NA = scanner.nextLine();
+                    m.set_username(NA);
+                    msg="name updated";
+                	}
+                    else if(w.equals("email")) {
+                    	System.out.println("Enter new email:");
+        	            String NA = scanner.nextLine();
+        	            m.set_email(NA);
+        	            msg="email updated";
+                    }
+                    else if(w.equals("pass")) {
+                    	  System.out.println("Enter new pass:");
+        		            String NA = scanner.nextLine();
+        		            m.set_pass(NA);
+        		            msg="pass updated";
+                    }
+                  
+                	
+                    else if(w.equals("type")) {
+                    	System.out.println("Enter new type:");
+        	            String NA = scanner.nextLine();
+        	            m.set_type(NA);
+        	            msg="type updated";
+                }
+                	
+                    else if(w.equals("age")) {
+                    	 System.out.println("Enter new age:");
+        		            int NA = scanner.nextInt();
+        		            m.set_age(NA);
+        		            msg="age updated";
+                 }
+                userFound = true;
+               
+            }
+        }
+    }
+    if(!userFound) {
+    	msg="user not found";
+    }
+   
 }
 
 public boolean account_exists (User U1) {

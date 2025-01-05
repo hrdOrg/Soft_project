@@ -1,5 +1,4 @@
 package gym2025_project;
-
 public class Feed{
 	public String prog;
 	public String instr;

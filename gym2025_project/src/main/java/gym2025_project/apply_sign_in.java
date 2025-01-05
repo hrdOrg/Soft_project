@@ -1,7 +1,7 @@
 package gym2025_project;
 
 import java.util.Scanner;
-
+/*
 public class apply_sign_in {
 public static void sign_in(Admin A) {
 	   Scanner scanner=new Scanner(System.in);   
@@ -106,3 +106,4 @@ public static void sign_in(Admin A) {
 
 }
 }
+*/

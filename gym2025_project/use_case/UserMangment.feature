@@ -17,6 +17,50 @@
 ## (Comments)
 #Sample Feature Definition Template
 Feature: Admin User Management
+
+
+Scenario: fill user information
+Given I WANT TO FIIL USER INFO
+When I CHOICE FILLINFO
+Then THE INFO HASS BEEN FILLED
+
+
+Scenario: update user information1
+Given I WANT TO UPDATE 
+When I CLIC to UPDATE1
+Then THE NAME must BE updated
+
+Scenario: update user information2
+Given I WANT TO UPDATE 
+When I CLIC to UPDATE2
+Then THE  EmAIL must BE updated
+
+Scenario: update user information3
+Given I WANT TO UPDATE
+When I CLIC to UPDATE3
+Then THE  PaSs must BE updated
+
+
+
+Scenario: update user information5
+Given I WANT TO UPDATE 
+When I CLIC to UPDATE5
+Then THE  AgE must BE updated
+
+Scenario: update user information6
+Given I WANT TO UPDATE 
+When I CLIC to UPDATE6
+Then THE  TyPe  must BE updated
+
+
+
+
+
+
+
+
+
+
 Scenario: Add accounts for clinet
 Given I am logged in as an admin
 When  when i clic in add account 

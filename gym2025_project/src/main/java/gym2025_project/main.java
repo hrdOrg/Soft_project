@@ -5,7 +5,7 @@ import gym2025_project.activity;
 import gym2025_project.User;
 import gym2025_project.sign_in;
 import java.util.*;
-
+/*
 public class main {
 	
 	public static Admin A=new Admin();
@@ -740,7 +740,7 @@ public static void admin_menu() {
 	
 	   
 		while(true) {
-			   System.out.println("welcome to admin's page ^_^");
+			 System.out.println("welcome to admin's page ^_^");
 			   System.out.println("1. creat account");
 			   System.out.println("2. show list of registered client");
 			   System.out.println("3. show list of registered instructor");
@@ -767,43 +767,19 @@ public static void admin_menu() {
 			   System.out.println("24. show_subscription Plan For Client");
 			   System.out.println("25. show_subscription Plan For instructor");
 			   System.out.println("26. exit");
+			  
 			   System.out.println("enter the transaction number you want --->");
-			Scanner scanner=new Scanner(System.in);
-			 int num=scanner.nextInt();
-			 switch(num) {
+			   Scanner scanner=new Scanner(System.in);
+			    int num=scanner.nextInt();
+			    switch(num) {
 			 case 1:{
-				 User u=new User();
-			
-		            System.out.println("Enter your username: ");
-		            scanner.nextLine();
-		            String nameee = scanner.nextLine();
-		            u.set_username(nameee);
-
-		            System.out.println("Enter your age: ");
-		            int age = scanner.nextInt();
-		            u.set_age(age);
-
-		            System.out.println("Enter your email: ");
-		            scanner.nextLine();
-		            String emailll = scanner.nextLine();
-		            u.set_email(emailll);
-
-		            System.out.println("Enter your password: ");
-		            String pass = scanner.nextLine();
-		            u.set_pass(pass);
-
-		            System.out.println("Enter your phone number: ");
-		            String number = scanner.nextLine();
-		            u.set_numbphone(number);
-
-		            System.out.println("Enter your type: ");
-		            String type = scanner.nextLine();
-		            u.set_type(type);
-		 
+				 User u=new User();	
+		           A.fill_info(u);
 				A.creat_account(u);
 		
 				break;
 			 }
+			 
 			 case 2:{
 				 
 					for(User uu: A.client) {
@@ -835,233 +811,15 @@ public static void admin_menu() {
 				 A.delete_account(n);
 			 }
 			 case 5:{
-				 System.out.println("5.1 i want to update username");
-				 System.out.println("5.2 i want to update email");
-				 System.out.println("5.3 i want to update pass");
-				 System.out.println("5.4 i want to update phonenum");
-				 System.out.println("5.5 i want to update age");
-				 System.out.println("5.6 i want to update type");
-				 System.out.println("enter number you want---->");
-				 int mm=scanner.nextInt();
-				 switch(mm) {
+				 System.out.println("enter number of account that you want to update it");
+				 scanner.nextLine();
+				 String f = scanner.nextLine();
+				 System.out.println("enter the field you want to update");	
+				 String w = scanner.nextLine();
+				 A.update(f, w);	 
 				 
-				 case 1:{
-					  System.out.println("Enter the phone number of the user you want to update:");
-					  scanner.nextLine();
-					    String N = scanner.nextLine();
-					    boolean userFound = false;
-
-					    for (User u : A.client) {
-					        if (u.get_numbphone().equals(N)) {
-					            System.out.println("Enter new username:");
-					            String NA = scanner.nextLine();
-					            u.set_username(NA);
-					            userFound = true;
-					            break;
-					        }
-					    }
-
-					    if (!userFound) {
-					        for (User m : A.instructor) {
-					            if (m.get_numbphone().equals(N)) {
-					                System.out.println("Enter new username:");
-					                String NA = scanner.nextLine();
-					                m.set_username(NA);
-					                userFound = true;
-					                break;
-					            }
-					        }
-					    }
-
-					    if (!userFound) {
-					        System.out.println("User with this phone number not found.");
-					    }
-					}
-					break;
-				
-				 case 2:{
-					 System.out.println("Enter the phone number of the user you want to update:");
-					  scanner.nextLine();
-					    String N = scanner.nextLine();
-					    boolean userFound = false;
-
-					    for (User u : A.client) {
-					        if (u.get_numbphone().equals(N)) {
-					            System.out.println("Enter new email:");
-					            String NA = scanner.nextLine();
-					            u.set_email(NA);
-					            userFound = true;
-					            break;
-					        }
-					    }
-
-					    if (!userFound) {
-					        for (User m : A.instructor) {
-					            if (m.get_numbphone().equals(N)) {
-					                System.out.println("Enter new email:");
-					                String NA = scanner.nextLine();
-					                m.set_email(NA);
-					                userFound = true;
-					                break;
-					            }
-					        }
-					    }
-
-					    if (!userFound) {
-					        System.out.println("User with this phone number not found.");
-					    }
-					}
-				 
-				 break;
-				 
-				 case 3:{
-					 System.out.println("Enter the phone number of the user you want to update:");
-					  scanner.nextLine();
-					    String N = scanner.nextLine();
-					    boolean userFound = false;
-
-					    for (User u : A.client) {
-					        if (u.get_numbphone().equals(N)) {
-					            System.out.println("Enter new pass:");
-					            String NA = scanner.nextLine();
-					            u.set_pass(NA);
-					            userFound = true;
-					            break;
-					        }
-					    }
-
-					    if (!userFound) {
-					        for (User m : A.instructor) {
-					            if (m.get_numbphone().equals(N)) {
-					                System.out.println("Enter new pass:");
-					                String NA = scanner.nextLine();
-					                m.set_pass(NA);
-					                userFound = true;
-					                break;
-					            }
-					        }
-					    }
-
-					    if (!userFound) {
-					        System.out.println("User with this phone number not found.");
-					    }
-					}
-				  
-				 
-				 break;
-				 
-				 case 4:{
-					 System.out.println("Enter the phone number of the user you want to update:");
-					  scanner.nextLine();
-					    String N = scanner.nextLine();
-					    boolean userFound = false;
-
-					    for (User u : A.client) {
-					        if (u.get_numbphone().equals(N)) {
-					            System.out.println("Enter new phone number :");
-					            String NA = scanner.nextLine();
-					            u.set_numbphone(NA);
-					            userFound = true;
-					            break;
-					        }
-					    }
-
-					    if (!userFound) {
-					        for (User m : A.instructor) {
-					            if (m.get_numbphone().equals(N)) {
-					                System.out.println("Enter new phone number:");
-					                String NA = scanner.nextLine();         
-					                m.set_numbphone(NA);
-					                userFound = true;
-					                break;
-					            }
-					        }
-					    }
-
-					    if (!userFound) {
-					        System.out.println("User with this phone number not found.");
-					    }
-					}
-				  
-				 
-				 break; 
-				 
-				 case 5:{
-					 System.out.println("Enter the phone number of the user you want to update:");
-					  scanner.nextLine();
-					    String N = scanner.nextLine();
-					    boolean userFound = false;
-
-					    for (User u : A.client) {
-					        if (u.get_numbphone().equals(N)) {
-					            System.out.println("Enter new age:");
-					            int NA = scanner.nextInt();
-					            u.set_age(NA);
-					            userFound = true;
-					            break;
-					        }
-					    }
-
-					    if (!userFound) {
-					        for (User m : A.instructor) {
-					            if (m.get_numbphone().equals(N)) {
-					                System.out.println("Enter new age:");
-					                int NA = scanner.nextInt();
-						            m.set_age(NA);
-					                userFound = true;
-					                break;
-					            }
-					        }
-					    }
-
-					    if (!userFound) {
-					        System.out.println("User with this phone number not found.");
-					    }
-					}
-				  
-				
-			 
-				 break; 
-				 
-				 
-				 case 6:{
-					 
-					 System.out.println("Enter the phone number of the user you want to update:");
-					  scanner.nextLine();
-					    String N = scanner.nextLine();
-					    boolean userFound = false;
-
-					    for (User u : A.client) {
-					        if (u.get_numbphone().equals(N)) {
-					            System.out.println("Enter new type:");
-					            String NA = scanner.nextLine();
-					            u.set_type(NA);
-					            userFound = true;
-					            break;
-					        }
-					    }
-
-					    if (!userFound) {
-					        for (User m : A.instructor) {
-					            if (m.get_numbphone().equals(N)) {
-					                System.out.println("Enter new type:");
-					                String NA = scanner.nextLine();
-						            m.set_type(NA);
-					                userFound = true;
-					                break;
-					            }
-					        }
-					    }
-
-					    if (!userFound) {
-					        System.out.println("User with this phone number not found.");
-					    }
-					}
-				  break;
-				 }
 			 }
-				 break; 
-				 
+			 break;
 				 
 			 case 6 :{
 				 System.out.println("Enter the email of instructor that you want to approve them:");
@@ -1353,3 +1111,4 @@ public static void admin_menu() {
 	}
 	 
 	 }
+*/
