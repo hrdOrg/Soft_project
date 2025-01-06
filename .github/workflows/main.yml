@@ -51,4 +51,4 @@ jobs:
           org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
           jacoco:report
           -Dsonar.coverage.exclusions=**/main.java
-          -Dsonar.projectKey=hdeOrg_Soft_project
+          -Dsonar.projectKey=hdrOrg_Soft_project
