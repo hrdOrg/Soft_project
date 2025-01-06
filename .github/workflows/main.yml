@@ -1,61 +1,46 @@
-name: SonarQube Analysis
+name: SonarCloud
 
 on:
-  push:
-    branches:
-      - main
+# these lines commented becouse of finiching of project so i dont need the workflow to run 
+  # push:
+  #   branches:
+  #     - master
   pull_request:
     types: [opened, synchronize, reopened]
-
 jobs:
   build:
-    name: Build and Analyze
+    name: Build and analyze
     runs-on: ubuntu-latest
-
     steps:
-      # Step 1: Check out the code
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Fetch full history for accurate analysis
-
-      # Step 2: Set up JDK 17
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Set up JDK 18
+        uses: actions/setup-java@v3
         with:
-          java-version: 17
-          distribution: 'zulu'  # You can change this to another distribution if needed
-
-      # Step 3: Cache SonarQube packages
-      - name: Cache SonarQube packages
-        uses: actions/cache@v4
+          java-version: 18
+          distribution: 'zulu' # Alternative distribution options are available.
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v3
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
-
-      # Step 4: Cache Maven dependencies
       - name: Cache Maven packages
-        uses: actions/cache@v4
+        uses: actions/cache@v3
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-
-      # Step 5: Build the project
-      - name: Build the project
-        run: mvn clean verify
-
-      # Step 6: Run SonarQube analysis
-      - name: SonarQube Analysis
+      - name: Build and analyze
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Required for PR info
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          mvn sonar:sonar \
-            -Dsonar.host.url=https://your-sonarqube-server.com  # Replace with your SonarQube server URL
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}  # SonarQube authentication token
-            -Dsonar.projectKey=hrdOrg_Soft_project  # Your project key in SonarQube
-            -Dsonar.projectName="HRD Soft Project"  # Your project name in SonarQube
-            -Dsonar.java.binaries=target/classes  # Location of compiled Java classes
-            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml  # Path to JaCoCo XML report
-            -Dsonar.coverage.exclusions=**/main.java  # Files to exclude from coverage analysis
+          DATABASE_USER: ${{ secrets.DATABASE_USER }}
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        # run: mvn -B -Dmaven.test.skip=true jacoco:prepare-agent verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Abdalsalamjod_car-accessories
+        run: mvn -X -B  jacoco:prepare-agent  verify  org.sonarsource.scanner.maven:sonar-maven-plugin:sonar jacoco:report  -Dsonar.projectKey=Abdalsalamjod_car-accessories
+#       run: mvn -B jacoco:prepare-agent verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar jacoco:report \
+    #   -Dsonar.projectKey=Abdalsalamjod_car-accessories
+      # -Dsonar.coverage.exclusions=**/application/Main.java,**/application/MainUtility.java,**/application/services/MessagesGenerator.java
