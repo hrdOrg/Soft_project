@@ -41,20 +41,21 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      # Step 5: Build the project and run SonarQube analysis
-      - name: Build and Analyze
+      # Step 5: Build the project
+      - name: Build the project
+        run: mvn clean verify
+
+      # Step 6: Run SonarQube analysis
+      - name: SonarQube Analysis
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Required for PR info
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          # Build the project and run SonarQube analysis
-          mvn clean verify sonar:sonar \
-            -Dsonar.host.url=https://your-sonarqube-server.com  # If using a custom SonarQube server
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}  # Authentication token for SonarQube
-            -Dsonar.projectKey=hrdOrg_Soft_project  # Your SonarQube project key
-            -Dsonar.projectName="HRD Soft Project"  # Name of your project in SonarQube
-            -Dsonar.coverage.exclusions=**/main.java  # Exclude specific files from coverage analysis
-            -Dsonar.java.binaries=target/classes  # Ensure SonarQube knows where the compiled classes are
-
-          # Optionally, you can specify JaCoCo report path if needed for better coverage analysis
-          -Dsonar.jacoco.reportPaths=target/jacoco.exec  # Path to JaCoCo coverage report
+          mvn sonar:sonar \
+            -Dsonar.host.url=https://your-sonarqube-server.com  # Replace with your SonarQube server URL
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}  # SonarQube authentication token
+            -Dsonar.projectKey=hrdOrg_Soft_project  # Your project key in SonarQube
+            -Dsonar.projectName="HRD Soft Project"  # Your project name in SonarQube
+            -Dsonar.java.binaries=target/classes  # Location of compiled Java classes
+            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml  # Path to JaCoCo XML report
+            -Dsonar.coverage.exclusions=**/main.java  # Files to exclude from coverage analysis
