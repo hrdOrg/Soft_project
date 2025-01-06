@@ -8,21 +8,9 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
-        <!-- SonarQube settings -->
-        <sonar.organization>hrdOrg</sonar.organization> <!-- Your SonarQube organization -->
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url> <!-- Point to your SonarQube/Cloud server -->
-        <sonar.projectKey>hrdOrg_Soft_project</sonar.projectKey> <!-- Your SonarQube project key -->
-        <sonar.projectName>HRD Soft Project</sonar.projectName> <!-- Your SonarQube project name -->
-
-        <!-- Java Version Configuration -->
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-
-        <!-- Character Encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <!-- Jacoco XML report path -->
-        <jacoco.report.path>${project.build.directory}/site/jacoco/jacoco.xml</jacoco.report.path>
     </properties>
 
     <build>
@@ -31,7 +19,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.10</version> <!-- Use the latest Jacoco version -->
+                <version>0.8.10</version>
                 <executions>
                     <!-- Attach JaCoCo Agent -->
                     <execution>
@@ -74,51 +62,13 @@
         </plugins>
     </build>
 
-    <reporting>
-        <plugins>
-            <!-- Jacoco Reporting -->
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.10</version>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>report</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
-        </plugins>
-    </reporting>
-
     <dependencies>
-        <!-- Cucumber Dependencies -->
+        <!-- Example dependency for tests -->
         <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-picocontainer</artifactId>
-            <version>7.3.4</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>7.3.4</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-core</artifactId>
-            <version>7.3.4</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit</artifactId>
-            <version>7.3.4</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
-
 </project>
