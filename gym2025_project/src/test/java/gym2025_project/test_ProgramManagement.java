@@ -1,5 +1,6 @@
 package gym2025_project;
 import static org.junit.Assert.assertFalse;
+
 import static org.junit.Assert.assertTrue;
 
 import io.cucumber.java.en.Given;
@@ -15,7 +16,8 @@ public class test_ProgramManagement {
 	schedule s=new schedule();
 	program d=new program();
 	program r=new program();
-	
+	program GR=new program();
+	program ddd=new program();
 	public void initial() {
 		d.set_titel("Janbaz Basics"); 
 		d.set_duration("three month");
@@ -24,9 +26,30 @@ public class test_ProgramManagement {
 		d.set_link("https://www.youtube.com/watch?v=IdjDjxNn9ws");
 		d.set_price("150 NIS");
 
+		GR.set_titel("ana"); 
+		GR.set_duration("three month");
+		GR.set_level("middle");
+		GR.set_goals("losse 8kg");
+		GR.set_link("https://www.youtube.com/watch?v=IdjDjxNn9ws");
+		GR.set_price("150 NIS");
+		
 		n.creat_program(d);
+		n.creat_program(GR);	
+	}
+	
+	public void initial3() {
+		
+		ddd.set_titel("Janbaz"); 
+		ddd.set_duration("three month");
+		ddd.set_level("middle");
+		ddd.set_goals("losse 8kg");
+		ddd.set_link("https://www.youtube.com/watch?v=IdjDjxNn9ws");
+		ddd.set_price("150 NIS");
+		n.creat_program(ddd);
+	//	n.creat_program(r);
 			
 	}
+	
 	
 	public void initial2() {
 		r.set_titel("Janbaz Basics"); 
@@ -39,6 +62,7 @@ public class test_ProgramManagement {
 	//	n.creat_program(r);
 			
 	}
+	
 	@Given("i am logged in as instructor")
 	public void i_am_logged_in_as_instructor() {
 		sign.sign_in("dania@gmail.com", "1111", A);
@@ -46,8 +70,8 @@ public class test_ProgramManagement {
 
 	@When("i clic in creat fitness program1")
 	public void i_clic_in_creat_fitness_program1() {
-		initial();
-		//n.creat_program(p);
+		initial3();
+	//	n.creat_program(r);
 	}
 
 	@When("i enter {string} as program titel")
@@ -147,6 +171,7 @@ public class test_ProgramManagement {
 	public void i_leave_duration_empty() {
 	    r.set_duration("");
 	    n.creat_program(r);
+	    
 	}
 
 	@When("i leave difficulty level empty")
@@ -233,7 +258,78 @@ public class test_ProgramManagement {
 	public void the_schedule_for_the_online_group_session_should_be_created_successfully() {
 		assertTrue(n.msg=="schedule not added");
 	}
+//=================
 
+@Given("I WANT TO UPDATE PrOgRaM")
+public void i_want_to_update_pr_og_ra_m() {
+   System.out.println("i want to update prpgram");
+}
+
+@When("I CLIC to PrOgRaM UPDATE1")
+public void i_clic_to_pr_og_ra_m_update1() {
+	initial();
+	n.update_project("ana","duration");
+}
+
+@Then("THE DuRaTion must BE updated")
+public void the_du_ra_tion_must_be_updated() {
+	assertTrue(n.msg=="duration updated");
+}
+
+@When("I CLIC to PrOgRaM UPDATE2")
+public void i_clic_to_pr_og_ra_m_update2() {
+	initial();
+	n.update_project("ana","level");
+}
+
+@Then("THE LEveL must BE updated")
+public void the_l_eve_l_must_be_updated() {
+	assertTrue(n.msg=="level updated");
+}
+
+@When("I CLIC to PrOgRaM UPDATE3")
+public void i_clic_to_pr_og_ra_m_update3() {
+	initial();
+	n.update_project("ana","goals");
+}
+
+@Then("THE GoOlS  must BE updated")
+public void the_go_ol_s_must_be_updated() {
+	assertTrue(n.msg=="goals updated");
+}
+
+@When("I CLIC to PrOgRaM UPDATE4")
+public void i_clic_to_pr_og_ra_m_update4() {
+	initial();
+	n.update_project("ana","link");
+}
+
+@Then("THE LiNK must BE updated")
+public void the_li_nk_must_be_updated() {
+	assertTrue(n.msg=="link updated");
+}
+
+@When("I CLIC to PrOgRaM UPDATE5")
+public void i_clic_to_pr_og_ra_m_update5() {
+	initial();
+	n.update_project("ana","price");
+}
+
+@Then("THE PrICE   must BE updated")
+public void the_pr_ice_must_be_updated() {
+	assertTrue(n.msg=="price updated");
+}
+
+@When("I CLIC to PrOgRaM UPDATE6")
+public void i_clic_to_pr_og_ra_m_update6() {
+	initial();
+	n.update_project("ananada","price");
+}
+
+@Then("THE pRoGrAm must BE Not updated")
+public void the_p_ro_gr_am_must_be_not_updated() {
+	assertTrue(n.msg=="program titel not found.");
+}
 
 
 }

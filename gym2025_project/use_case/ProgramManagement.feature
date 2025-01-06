@@ -19,6 +19,40 @@
 
 Feature: program mangment
 
+
+
+Scenario: update program information1
+Given I WANT TO UPDATE PrOgRaM 
+When I CLIC to PrOgRaM UPDATE1
+Then THE DuRaTion must BE updated
+
+Scenario: update program information2
+Given I WANT TO UPDATE PrOgRaM 
+When I CLIC to PrOgRaM UPDATE2
+Then THE LEveL must BE updated
+
+Scenario: update program information3
+Given I WANT TO UPDATE PrOgRaM 
+When I CLIC to PrOgRaM UPDATE3
+Then THE GoOlS  must BE updated
+
+
+Scenario: update program information4
+Given I WANT TO UPDATE PrOgRaM 
+When I CLIC to PrOgRaM UPDATE4
+Then THE LiNK must BE updated
+
+Scenario: update program information5 
+Given I WANT TO UPDATE PrOgRaM 
+When I CLIC to PrOgRaM UPDATE5
+Then THE PrICE   must BE updated
+
+Scenario: program not found 
+Given I WANT TO UPDATE PrOgRaM 
+When I CLIC to PrOgRaM UPDATE6
+Then THE pRoGrAm must BE Not updated
+
+
 Scenario: Create fitness programs 
 Given i am logged in as instructor
 When i clic in creat fitness program1 

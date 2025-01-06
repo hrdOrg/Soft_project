@@ -20,6 +20,7 @@ public class test_UserMangent {
 	 User U3=new User();
 	 User U4=new User();
 	 User U5=new User();
+	 User U6=new User();
 	public void initi() {
 		// User U3=new User();
 		    U3.set_username("dania");
@@ -30,13 +31,22 @@ public class test_UserMangent {
 			U3.set_email("dania@gmail.com");
 			A.creat_account(U3);
 			//User U4=new User();
-		    U4.set_username("dodo");
+		    U4.set_username("fofo");
 	        U4.set_age(21); 
 			U4.set_numbphone("099976977994");
 			U4.set_pass("1111");
 			U4.set_type("pending instructor");
-			U4.set_email("dodo@gmail.com");
-			A.creat_account(U4);
+			U4.set_email("fofo@gmail.com");
+			
+			    U6.set_username("dodo");
+		        U6.set_age(21); 
+				U6.set_numbphone("00000");
+				U6.set_pass("1111");
+				U6.set_type("pending instructor");
+				U6.set_email("dodo@gmail.com");
+		  
+				A.creat_account(U6);
+			A.creat_account(U4);		
 			A.add_user_activity(v1);
 			
 	}
@@ -127,8 +137,87 @@ public void i_clic_to_update6() {
 @Then("THE  TyPe  must BE updated")
 public void the_ty_pe_must_be_updated() {
 	assertTrue(A.msg.equals("type updated"));
-	
 }
+
+////
+@Given("I WANT TO UPDATE INSTRUCTOR")
+public void i_want_to_update_instructor() {
+	 System.out.println("i want update instructor");
+}
+
+@When("I CLIC to UPDATE instructor1")
+public void i_clic_to_update_instructor1() {
+	 initi();
+	    A.update("099976977994","name");
+}
+
+@Then("THE NAME must BE updated22")
+public void the_name_must_be_updated22() {
+	assertTrue(A.msg.equals("name updated"));
+}
+
+@When("I CLIC to UPDATE instructor2")
+public void i_clic_to_update_instructor2() {
+	 initi();
+	    A.update("099976977994","email");
+}
+
+@Then("THE  EmAIL must BE updated22")
+public void the_em_ail_must_be_updated22() {
+	assertTrue(A.msg.equals("email updated"));
+}
+
+@When("I CLIC to UPDATE instructor3")
+public void i_clic_to_update_instructor3() {
+	 initi();
+	    A.update("099976977994","pass");
+}
+
+@Then("THE  PaSs must BE updated22")
+public void the_pa_ss_must_be_updated22() {
+	assertTrue(A.msg.equals("pass updated"));
+}
+
+@When("I CLIC to UPDATE instructor5")
+public void i_clic_to_update_instructor5() {
+	 initi();
+	    A.update("099976977994","age");
+}
+
+@Then("THE  AgE must BE updated22")
+public void the_ag_e_must_be_updated22() {
+	assertTrue(A.msg.equals("age updated"));
+}
+
+@When("I CLIC to UPDATE instructor6")
+public void i_clic_to_update_instructor6() {
+	 initi();
+	    A.update("099976977994","type");
+}
+
+@Then("THE  TyPe  must BE updated22")
+public void the_ty_pe_must_be_updated22() {
+	assertTrue(A.msg.equals("type updated"));
+}
+
+@Given("I w TO UPDATE")
+public void i_w_to_update() {
+    System.out.println("not found");
+}
+
+@When("I CLIC to UPDATE instructor7")
+public void i_clic_to_update_instructor7() {
+	 A.update("000","type");
+}
+
+@Then("THE must BE notFounD")
+public void the_must_be_not_foun_d() {
+	assertTrue(A.msg.equals("user not found"));
+}
+
+
+
+
 //==========================================================================
 @Given("I am logged in as an admin")
 public void i_am_logged_in_as_an_admin() {

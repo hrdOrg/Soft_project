@@ -2,6 +2,7 @@ package gym2025_project;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Scanner;
 
 public class instructor {
 	public String msg;
@@ -9,10 +10,63 @@ public class instructor {
 	public static ArrayList<schedule> scheduleList=new ArrayList<schedule>();
 	public static ArrayList<String> Notification=new ArrayList<String>();
     public static ArrayList<UserFitnessProgram> useFitnessProgram=new ArrayList<UserFitnessProgram>();
-	
+    Scanner scanner=new Scanner(System.in);
 	
 	public void add_userFatnessProgram(UserFitnessProgram u) {
 		useFitnessProgram.add(u);
+	}
+	
+	
+	public void update_project(String d,String c) {
+		 boolean userFound = false;
+	    for (program p : programList) {
+	        if (p.get_titel().equals(d)) {
+	        	
+	        	if(c.equals("duration")) {
+	        		  System.out.println("Enter new duration:");
+			            String NA = scanner.nextLine();
+			            p.set_duration(NA);
+		            msg="duration updated";
+		        	}
+	            
+	        	else if(c.equals("level")) {
+	        		 System.out.println("Enter new difficulty level:");
+			            String NA = scanner.nextLine();
+			            p.set_level(NA);
+		            msg="level updated";
+		        	}
+	            
+	        	else if(c.equals("goals")) {
+	        		 System.out.println("Enter new goals:");
+			            String NA = scanner.nextLine();
+			            p.set_goals(NA);
+		            msg="goals updated";
+		        	}
+	            
+	        	
+	        	
+	        	else if(c.equals("price")) {
+	        		 System.out.println("Enter new price:");
+			            String NA = scanner.nextLine();
+			            p.set_price(NA);
+		            msg="price updated";
+		        	}
+	        	else if(c.equals("link")) {
+	        		   System.out.println("Enter new link:");
+			            String NA = scanner.nextLine();
+			            p.set_link(NA);
+		            msg="link updated";
+		        	}
+	                        
+	            userFound = true;
+	           
+	        }
+	    }
+
+	    if (!userFound) {
+	        System.out.println("program titel not found.");
+	        msg="program titel not found.";
+	    }
 	}
 	
 	

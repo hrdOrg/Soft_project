@@ -53,12 +53,38 @@ When I CLIC to UPDATE6
 Then THE  TyPe  must BE updated
 
 
+Scenario: update user informationIN
+Given I WANT TO UPDATE INSTRUCTOR
+When I CLIC to UPDATE instructor1
+Then THE NAME must BE updated22
+
+Scenario: update user informationIN
+Given I WANT TO UPDATE INSTRUCTOR
+When I CLIC to UPDATE instructor2
+Then THE  EmAIL must BE updated22
+
+Scenario: update user informationIN
+Given I WANT TO UPDATE INSTRUCTOR
+When I CLIC to UPDATE instructor3
+Then THE  PaSs must BE updated22
 
 
 
+Scenario: update user informationIN
+Given I WANT TO UPDATE INSTRUCTOR
+When I CLIC to UPDATE instructor5
+Then THE  AgE must BE updated22
+
+Scenario: update user informationIN
+Given I WANT TO UPDATE INSTRUCTOR
+When I CLIC to UPDATE instructor6
+Then THE  TyPe  must BE updated22
 
 
-
+Scenario: user not in array
+Given I w TO UPDATE 
+When I CLIC to UPDATE instructor7
+Then THE must BE notFounD
 
 
 Scenario: Add accounts for clinet
