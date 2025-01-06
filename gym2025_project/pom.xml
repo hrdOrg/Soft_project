@@ -20,6 +20,9 @@
 
         <!-- Character Encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Jacoco XML report path -->
+        <jacoco.report.path>${project.build.directory}/site/jacoco/jacoco.xml</jacoco.report.path>
     </properties>
 
     <build>
@@ -30,11 +33,13 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.10</version> <!-- Use the latest Jacoco version -->
                 <executions>
+                    <!-- Attach JaCoCo Agent -->
                     <execution>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
+                    <!-- Generate JaCoCo XML report -->
                     <execution>
                         <id>report</id>
                         <phase>verify</phase>
@@ -43,13 +48,28 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <dataFile>${project.build.directory}/jacoco.exec</dataFile>
+                    <outputDirectory>${project.build.directory}/site/jacoco</outputDirectory>
+                </configuration>
             </plugin>
 
             <!-- SonarQube Plugin -->
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.9.1.2184</version> <!-- SonarQube Plugin version -->
+                <version>3.9.1.2184</version>
+            </plugin>
+
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -73,6 +93,7 @@
     </reporting>
 
     <dependencies>
+        <!-- Cucumber Dependencies -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-picocontainer</artifactId>
