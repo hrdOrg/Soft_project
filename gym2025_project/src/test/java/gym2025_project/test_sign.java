@@ -10,23 +10,23 @@ public class test_sign {
 	Admin A= new Admin();
 	public void intil() {
 		//sign_in sign=new sign_in();
-		 User R=new User();
-	    R.set_username("rama");
-		R.set_age(21); 
-		R.set_numbphone("09765464");
-		R.set_pass("1311");
-		R.set_type("pending instructor");
-		R.set_email("rama@gmail.com");
+		 User RR=new User();
+	    RR.set_username("samera");
+		RR.set_age(21); 
+		RR.set_numbphone("065464");
+		RR.set_pass("1311");
+		RR.set_type("pending instructor");
+		RR.set_email("samera@gmail.com");
 		
-		 User R2=new User();
-		    R2.set_username("dania");
-			R2.set_age(21); 
-			R2.set_numbphone("0999765464");
-			R2.set_pass("1111");
-			R2.set_type("inactive client");
-			R2.set_email("dania@gmail.com");
-			A.creat_account(R2);
-			A.creat_account(R);
+		 User RR2=new User();
+		    RR2.set_username("daniaaa");
+			RR2.set_age(21); 
+			RR2.set_numbphone("5464");
+			RR2.set_pass("1111");
+			RR2.set_type("inactive client");
+			RR2.set_email("daniaaa@gmail.com");
+			A.creat_account(RR2);
+			A.creat_account(RR);
 	}
 	
 	@Given("a user wants to sign in")
@@ -37,22 +37,23 @@ public class test_sign {
 
 	@When("they click on sign_in")
 	public void they_click_on_sign_in() {
-		s.sign_in("dania@gmail.com","1111",A);
+	
+		s.sign_in("samera@gmail.com","1311",A);
 	}
 
 	@When("they enter {string} as his_email")
 	public void they_enter_as_his_email(String string) {
-	  s.set_username("dania@gmail.com");
+	  s.set_username("samera@gmail.com");
 	}
 
 	@When("they enter {string} as his_password")
 	public void they_enter_as_his_password(String string) {
-	    s.set_pass("1111");
+	    s.set_pass("1311");
 	}
 
 	@Then("they see a message {string}")
 	public void they_see_a_message(String string) {
-		 assertTrue(A.msg=="client logged in successfully");
+		 assertTrue(A.msg.equals("instructor logged in successfully"));
 	}
 //======================================================================================================================================
 	@When("they click in sign_in")

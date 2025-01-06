@@ -5,18 +5,600 @@ import gym2025_project.activity;
 import gym2025_project.User;
 import gym2025_project.sign_in;
 import java.util.*;
-
+/*
 public class main {
 	
 	public static Admin A=new Admin();
 	public static instructor N=new instructor();
 	public static suggestion_instructor sg=new  suggestion_instructor();
+	public static client_msg M=new  client_msg();
+	public static void instructor_menu() {
+		while(true) {
+			
+			System.out.println("Welcome to instructor page ^_^");
+			   System.out.println("1. Creat  fitness program ");
+			   System.out.println("2. show  fitness program ");
+			   System.out.println("3. Delete  fitness program ");
+			   System.out.println("4. Update  fitness program ");
+			   System.out.println("5. Set schedules for group sessions");
+			   System.out.println("6. Show schedules for group sessions");
+			   
+			   System.out.println("7. Send massege to client");
+			   System.out.println("8. Send feedback to client");
+			   
+			   System.out.println("9. Add User fitness program ");
+			   System.out.println("10. Show List of user fitness program ");
+			   System.out.println("11. Show complete session of client ");
+			   System.out.println("12. Update client weight ");
+			   System.out.println("13. Calculating body mass index (BMI) ");
+			   System.out.println("14. If the program's meetings end, change its status ");
+			   System.out.println("15. Send motivation to client");
+			   System.out.println("16. Send reminders or recommendations to client ");
+			   
+			   System.out.println("17. Notify clients about changes to program schedules ");
+			   System.out.println("18. Announce new programs to clients ");
+			   System.out.println("19. Notify clients about special offers ");
+			
+			   System.out.println("20.  add suggesion for admin ");
+			   System.out.println("21. add feedback for admin");
+			   System.out.println("22.  add helth whelness for admin");
+			   
+			   System.out.println("23. exit ");
+			   
+			   System.out.println("enter the transaction number you want --->");
+			   Scanner scanner=new Scanner(System.in);
+			   int number=scanner.nextInt();
+			   
+			   switch(number) {
+			   
+			   case 1:{
+				   program p=new program();
+					
+		            System.out.println("Enter program titel:");
+		            scanner.nextLine();
+		            String titel = scanner.nextLine();
+		            p.set_titel(titel);
+
+		            System.out.println("Enter duration of program:");
+		            String duration = scanner.nextLine();
+		            p.set_duration(duration);
+
+		            System.out.println("Enter difficulty level to program:");
+		           // scanner.nextLine();
+		            String level = scanner.nextLine();
+		            p.set_level(level);
+
+		            System.out.println("Enter goals to prgram:");
+		            String goals = scanner.nextLine();
+		            p.set_goals(goals);
+
+		            System.out.println("Enter price for program:");
+		            String price = scanner.nextLine();
+		            p.set_price(price);
+		            
+		            System.out.println("Enter link for program:");
+		            String link = scanner.nextLine();
+		            p.set_link(link);
+
+		 
+				 N.creat_program(p);			
+				   
+			   }
+			   break;   
+			   case 2:{
+				   for(program pp: N.programList) {
+						System.out.println("program titel:"+pp.get_titel());
+						 System.out.println("program duration:"+pp.get_duration());
+						 System.out.println("program goals:"+pp.get_goals());
+						 System.out.println("program difficulty level:"+pp.get_level());
+						 System.out.println("program link:"+pp.get_link());
+						 System.out.println("program price:"+pp.get_price());
+					 
+				   
+			   }
+			   }
+			   break;
+			   
+			   case 3:{
+				   
+				   System.out.println("enter titel of program that you want to delet it");
+					 scanner.nextLine();
+					 String l = scanner.nextLine();
+					 N.delete_program(l);
+				   
+			   }
+			   break;
+			   case 4:{
+				   System.out.println("enter the titel of program that you want to update it");
+					 scanner.nextLine();
+					 String f = scanner.nextLine();
+					 System.out.println("enter the field you want to update");	
+					 String w = scanner.nextLine();
+					 N.update_project(f, w);
+			   }
+			   break;
+			   
+			   case 5:{
+				   schedule s=new schedule();
+					
+		            System.out.println("Enter schedule titel:");
+		            scanner.nextLine();
+		            String titel = scanner.nextLine();
+		            s.set_titel(titel);
+
+		            System.out.println("Enter schedule date:");
+		            String datee = scanner.nextLine();
+		            s.set_date(datee);
+
+		            System.out.println("Enter time of schedule:");
+		            String timee = scanner.nextLine();
+		            s.set_time(timee);
+
+		            System.out.println("Enter type for schedule:");
+		            String typee = scanner.nextLine();
+		            s.set_type(typee);
+		            
+		            System.out.println("Enter type for meeting place:");
+		            String placee = scanner.nextLine();
+		            s.set_place(placee);
+		            
+		            N.set_schedule(s);
+				   
+			   }
+			   break;
+			   
+			   
+			   case 6:{
+				   
+				   for(schedule ss: N.scheduleList) {
+					   
+						System.out.println("titel of schedule:"+ss.get_titel());
+						 System.out.println("date of schedule:"+ss.get_date());
+						 System.out.println("time of schedule:"+ss.get_time());
+						 System.out.println("type of schedule:"+ss.get_type());
+						 System.out.println("meeting place of schedule:"+ss.get_place());
+						 
+				   }
+				   
+			   }
+			   break;
+			   case 7:{
+				   System.out.println("enter email of user that you want to send msg for him:");
+				   scanner.nextLine();
+				   String msgg=scanner.nextLine();
+				   for(User u:A.client) {
+					   if(u.get_email().equals(msgg)) {
+						   M.set_name(u.get_username());
+						   M.set_email(msgg);
+						   System.out.println("enter msg that you want sent to client:");
+						   String Msgg=scanner.nextLine();
+						   M.send_massege_to_client(Msgg);
+						   System.out.println("msg sent >_<");
+					   }
+					   else {
+						   System.out.println("User not found");
+					   }
+				   }
+				   
+				   
+			   }
+			   break;
+			   case 8:{
+				   System.out.println("enter email of user that you want to send feedback for him:");
+				   scanner.nextLine();
+				   String ff=scanner.nextLine();
+				   for(User u:A.client) {
+					   if(u.get_email().equals(ff)) {
+						   M.set_name(u.get_username());
+						   M.set_email(ff);
+						   System.out.println("enter feedback that you want sent to client:");
+						   String Msgg=scanner.nextLine();
+						   M.send_feedback_to_client(Msgg);
+						   System.out.println("feedback sent >_<");
+					   }
+					   else {
+						   System.out.println("User not found");
+					   }
+				   }
+				   
+			   }
+			   break;
+			   case 9:{
+				   
+				   UserFitnessProgram F=new UserFitnessProgram();
+				   System.out.println("enter name of user that you want to add user fitness program:");
+				   scanner.nextLine();
+				   String name=scanner.nextLine();
+				   System.out.println("enter titel of program you want to track user progress on:");
+				   String namee=scanner.nextLine();
+				   boolean user=false;
+				   boolean program=false;
+				   
+				   for(User u:A.client) {
+					   if(u.get_username().equals(name)) {
+						  user=true;
+						  F.set_name(u);
+						  
+					   }
+					  // else 
+						  // System.out.println("User not found");
+					   
+				   }
+				   for(program p:N.programList) {
+					   if(p.get_titel().equals(namee)) {
+						   program=true;
+						   F.set_programName(p);
+						   
+					   }
+					   else {
+						   System.out.println("program not found"); 
+					   }
+				   }
+				   
+				   if(program && user) {
+						
+			            System.out.println("Enter gender of client:");
+			            String gender = scanner.nextLine();
+			            F.set_gender(gender);
+
+			            System.out.println("Enter weight of client:");
+			            double weight = scanner.nextDouble();
+			            F.set_weight(weight);
+
+			            System.out.println("Enter height of client:");
+			            double height = scanner.nextDouble();
+			            F.set_hight(height);
+
+			            System.out.println("Enter fitness Goal:");
+			            scanner.next();
+			            String goals = scanner.nextLine();
+			            F.set_fitnessGoal(goals);
+
+			            System.out.println("Enter total Sessions:");
+			            int total = scanner.nextInt();
+			            F.set_totalSessions(total);
+			            
+			            System.out.println("Enter completed Sessions:");
+			            int complete = scanner.nextInt();
+			            F.set_completedSessions(complete);
+			           
+	                   N.add_userFatnessProgram(F);
+	                   
+				
+				   }
+				   
+			   }
+			   break;
+			   case 10:{
+				   
+				   for(UserFitnessProgram f: N.useFitnessProgram) {
+						System.out.println("gender of client:"+f.get_gender());
+						 System.out.println("weight of client:"+f.get_weight());
+						 System.out.println("height of client:"+f.get_height());
+						 System.out.println("fitness Goal:"+f.get_fitnessGoal());
+						 System.out.println("total Sessions:"+f.get_totalSessions());
+						 System.out.println("completed Sessions:"+f.get_completedSessions());
+					 
+				   
+			   }
+				   
+				
+				   
+			   }
+			   break;
+			   case 11:{
+				   
+				   
+				   System.out.println("enter name of user that you want to show complete session:");
+				   scanner.nextLine();
+				   String name=scanner.nextLine();
+				   
+			  
+				   for(UserFitnessProgram pp:N.useFitnessProgram) {
+					   if(pp.get_name().equals(name)) {
+						  
+						  pp.completeSession();
+						  
+					   }
+					  
+				   }
+				   
+				   
+			   }
+			   break;
+			   case 12:{
+				   
+				   
+				   System.out.println("enter name of user that you want to update weight:");
+				   scanner.nextLine();
+				   String name=scanner.nextLine();
+				   
+			  
+				   for(UserFitnessProgram pp:N.useFitnessProgram) {
+					   if(pp.get_name().equals(name)) {
+						   System.out.println("enter new weight:");
+						   double d=scanner.nextDouble();
+						   pp.updateWeight(d);
+						 
+					   }
+					   
+				   }
+				   
+			   }
+			   break;
+			   case 13:{
+				   
+				   
+				   System.out.println("enter name of user that you want to calculate BMI:");
+				   scanner.nextLine();
+				   String name=scanner.nextLine();
+				   
+			  
+				   for(UserFitnessProgram pp:N.useFitnessProgram) {
+					   if(pp.get_name().equals(name)) {
+						  
+						  double d=pp.calculateBMI();
+						  System.out.println("BMI="+d);
+						  
+					   }
+					  
+				   }
+				   
+			   }
+			   break;
+			   case 14:{
+				   
+				   System.out.println("enter name of user that you want to update Status program:");
+				   scanner.nextLine();
+				   String name=scanner.nextLine();
+				   
+			  
+				   for(UserFitnessProgram pp:N.useFitnessProgram) {
+					   if(pp.get_name().equals(name)) {
+						  
+						  for(program p:N.programList) {
+							  if(p.get_titel().equals(pp.get_programName())) {
+								  pp.updateStatusprogram(p);
+								  System.out.println(p.status);
+							  }
+						  }
+						  
+					   }
+					 
+				   }
+				   
+				   
+				   
+			   }
+			   break;
+			   case 15:{
+				   
+				   System.out.println("enter email of user that you want to send motivation for him:");
+				   scanner.nextLine();
+				   String msgg=scanner.nextLine();
+				   for(User u:A.client) {
+					   if(u.get_email().equals(msgg)) {
+						   M.set_name(u.get_username());
+						   M.set_email(msgg);
+						   System.out.println("enter motivation that you want sent to client:");
+						   String Msgg=scanner.nextLine();
+						   M.send_motivation_to_client(Msgg);
+						   System.out.println("motivation sent >_<");
+					   }
+					   else {
+						   System.out.println("User not found");
+					   }
+				   }
+				   
+			   }
+			   break;
+			   case 16:{
+				   
+				   System.out.println("enter email of user that you want to send reminders or recommendations to client:");
+				   scanner.nextLine();
+				   String msgg=scanner.nextLine();
+				   for(User u:A.client) {
+					   if(u.get_email().equals(msgg)) {
+						   M.set_name(u.get_username());
+						   M.set_email(msgg);
+						   System.out.println("enter reminders or recommendations to client that you want sent to client:");
+						   String Msgg=scanner.nextLine();
+						   M.set_Notification(Msgg);
+						   System.out.println("reminders or recommendations to client sent >_<");
+					   }
+					   else {
+						   System.out.println("User not found");
+					   }
+				   }
+				   
+			   }
+			   break;
+			   case 17:{
+				   
+				   N.scheduleChange();
+				   
+			   }
+			   break;
+	           case 18:{
+	        	   
+	        	   N.Newschedule();
+				   
+			   }
+			   break;
+	           case 19:{
+	        	   
+	        	   N.scheduleChange();
+				   
+			   }
+			   break;
+			   
+	           case 20:{
+	        	   System.out.println("add siggesion for amin:");
+				   scanner.nextLine();
+				   String msgg=scanner.nextLine();
+				   sg.add_suggesion(msgg);
+	           }
+	           
+			   break;
+	           case 21:{
+	           	   System.out.println("add feedback for admian:");
+	        				   scanner.nextLine();
+	        				   String msgg=scanner.nextLine();
+	        				   sg.add_feedback_instruc(msgg);
+	           }
+	          case 22:{
+	        	  System.out.println("add helthwhelness for admian:");
+				   scanner.nextLine();
+				   String msgg=scanner.nextLine();
+				   sg.add_helthwellnessarticles(msgg);
+	          }
+	          case 23:{
+	        	  apply_sign_in.sign_in(A);
+	          }
+			   }
+			   
+			   }
+	}
+public static void client_menu() {
+	
+	 Scanner scanner = new Scanner(System.in);
+     client client = new client(); // Create an instance of the client class
+     int choice;
+     while(true) {
+	  System.out.println("\n=== Client Menu ===");
+      System.out.println("1. Set Name");
+      System.out.println("2. Get Name");
+      System.out.println("3. Set Age");
+      System.out.println("4. Get Age");
+      System.out.println("5. Set Gender");
+      System.out.println("6. Get Gender");
+      System.out.println("7. Set Height");
+      System.out.println("8. Get Height");
+      System.out.println("9. Set Weight");
+      System.out.println("10. Get Weight");
+      System.out.println("11. Add Fitness Goal");
+      System.out.println("12. View Fitness Goal");
+      System.out.println("13. Delete Fitness Goal");
+      System.out.println("14. Add Dietary Preference");
+      System.out.println("15. View Dietary Preference");
+      System.out.println("16. Delete Dietary Preference");
+      System.out.println("17. Add Achievement");
+      System.out.println("18. View Achievements");
+      System.out.println("19. Delete Achievement");
+      System.out.println("20. Calculate BMI");
+      System.out.println("21. Exit");
+      System.out.print("Enter your choice: ");
+
+      
+          choice = scanner.nextInt();
+          scanner.nextLine(); // Consume newline character
+
+          switch (choice) {
+              case 1:
+                  System.out.print("Enter Name: ");
+                  String name = scanner.nextLine();
+                  client.setName(name);
+                  System.out.println("Name set successfully.");
+                  break;
+              case 2:
+              	System.out.println("Name is:"+ client.getName());
+              	break;
+              case 3:
+                  System.out.print("Enter Age: ");
+                  int age = scanner.nextInt();
+                  client.setAge(age);
+                  System.out.println("Age set successfully.");
+                  break;
+              case 4:
+              	System.out.println("Age is:"+client.getAge());
+              	break;
+              case 5:
+                  System.out.print("Enter Gender: ");
+                  String gender = scanner.next();
+                  client.setGender(gender);
+                  System.out.println("Gender set successfully.");
+                  break;
+              case 6:
+              	System.out.println("Gender is:"+client.getGender());
+              	break;
+              case 7:
+                  System.out.print("Enter Height: ");
+                  double height = scanner.nextDouble();
+                  client.setHight(height);
+                  System.out.println("Height set successfully.");
+                  break;
+              case 8:
+              	System.out.println("Height is:"+client.getHeight());
+              	break;
+              case 9:
+                  System.out.print("Enter Weight: ");
+                  double weight = scanner.nextDouble();
+                  client.setWeight(weight);
+                  System.out.println("Weight set successfully.");
+                  break;
+              case 10:
+              	System.out.println("Weight is:"+client.getWeight());	
+              	break;
+              case 11:
+                  System.out.print("Enter Fitness Goal: ");
+                  String fitnessGoal = scanner.nextLine();
+                  client.addFittnessGoals(fitnessGoal);
+                  break;
+              case 12:
+              	System.out.println("Fittness Goals:"+client.getFittnessGoals());
+              	break;
+              case 13:
+                  System.out.print("Enter Fitness Goal to Delete: ");
+                  String goalToDelete = scanner.nextLine();
+                  client.deleteFittnessGoals(goalToDelete);
+                  break;
+              case 14:
+                  System.out.print("Enter Dietary Preference: ");
+                  String dietary = scanner.nextLine();
+                  client.addDietary(dietary);
+                  break;
+              case 15:
+              	System.out.println("Dietary Preference: "+client.getDietary());
+              	break;
+              case 16:
+                  System.out.print("Enter Dietary Preference to Delete: ");
+                  String dietaryToDelete = scanner.nextLine();
+                  client.deleteDietary(dietaryToDelete);
+                  break;
+              case 17:
+                  System.out.print("Enter Achievement: ");
+                  String achievement = scanner.nextLine();
+                  client.addAchievements(achievement);
+                  break;
+              case 18:
+                  System.out.println("Achievements: " + client.getAchievements());
+                  break;
+              case 19:
+                  System.out.print("Enter Achievement to Delete: ");
+                  String achievementToDelete = scanner.nextLine();
+                  client.delAchievements(achievementToDelete);
+                  break;
+              case 20:
+                  client.calBMI();
+                  System.out.println("Your BMI: " + client.getBMI());
+                  break;
+              case 21:
+            	  apply_sign_in.sign_in(A);
+              default:
+                  System.out.println("Invalid choice. Please try again.");
+          }
+
+      }
+
+      
+  }
+
 	
 public static void admin_menu() {
 	
 	   
 		while(true) {
-			   System.out.println("welcome to admin's page ^_^");
+			 System.out.println("welcome to admin's page ^_^");
 			   System.out.println("1. creat account");
 			   System.out.println("2. show list of registered client");
 			   System.out.println("3. show list of registered instructor");
@@ -42,45 +624,20 @@ public static void admin_menu() {
 			   System.out.println("23. delete_Subscription plan For instructor");
 			   System.out.println("24. show_subscription Plan For Client");
 			   System.out.println("25. show_subscription Plan For instructor");
-			   System.out.println("26. back");
+			   System.out.println("26. exit");
+			  
 			   System.out.println("enter the transaction number you want --->");
-			Scanner scanner=new Scanner(System.in);
-			 int num=scanner.nextInt();
-			 switch(num) {
+			   Scanner scanner=new Scanner(System.in);
+			    int num=scanner.nextInt();
+			    switch(num) {
 			 case 1:{
-				 User u=new User();
-			
-
-		            System.out.println("Enter your username: ");
-		            scanner.nextLine();
-		            String nameee = scanner.nextLine();
-		            u.set_username(nameee);
-
-		            System.out.println("Enter your age: ");
-		            int age = scanner.nextInt();
-		            u.set_age(age);
-
-		            System.out.println("Enter your email: ");
-		            scanner.nextLine();
-		            String emailll = scanner.nextLine();
-		            u.set_email(emailll);
-
-		            System.out.println("Enter your password: ");
-		            String pass = scanner.nextLine();
-		            u.set_pass(pass);
-
-		            System.out.println("Enter your phone number: ");
-		            String number = scanner.nextLine();
-		            u.set_numbphone(number);
-
-		            System.out.println("Enter your type: ");
-		            String type = scanner.nextLine();
-		            u.set_type(type);
-		 
+				 User u=new User();	
+		           A.fill_info(u);
 				A.creat_account(u);
 		
 				break;
 			 }
+			 
 			 case 2:{
 				 
 					for(User uu: A.client) {
@@ -112,233 +669,24 @@ public static void admin_menu() {
 				 A.delete_account(n);
 			 }
 			 case 5:{
-				 System.out.println("5.1 i want to update username");
-				 System.out.println("5.2 i want to update email");
-				 System.out.println("5.3 i want to update pass");
-				 System.out.println("5.4 i want to update phonenum");
-				 System.out.println("5.5 i want to update age");
-				 System.out.println("5.6 i want to update type");
-				 System.out.println("enter number you want---->");
-				 int mm=scanner.nextInt();
-				 switch(mm) {
+				 System.out.println("enter number of account that you want to update it");
+				 scanner.nextLine();
+				 String f = scanner.nextLine();
+				 System.out.println("enter the field you want to update");	
+				 String w = scanner.nextLine();
+				 A.update(f, w);	 
 				 
-				 case 1:{
-					  System.out.println("Enter the phone number of the user you want to update:");
-					  scanner.nextLine();
-					    String N = scanner.nextLine();
-					    boolean userFound = false;
-
-					    for (User u : A.client) {
-					        if (u.get_numbphone().equals(N)) {
-					            System.out.println("Enter new username:");
-					            String NA = scanner.nextLine();
-					            u.set_username(NA);
-					            userFound = true;
-					            break;
-					        }
-					    }
-
-					    if (!userFound) {
-					        for (User m : A.instructor) {
-					            if (m.get_numbphone().equals(N)) {
-					                System.out.println("Enter new username:");
-					                String NA = scanner.nextLine();
-					                m.set_username(NA);
-					                userFound = true;
-					                break;
-					            }
-					        }
-					    }
-
-					    if (!userFound) {
-					        System.out.println("User with this phone number not found.");
-					    }
-					}
-					break;
-				
-				 case 2:{
-					 System.out.println("Enter the phone number of the user you want to update:");
-					  scanner.nextLine();
-					    String N = scanner.nextLine();
-					    boolean userFound = false;
-
-					    for (User u : A.client) {
-					        if (u.get_numbphone().equals(N)) {
-					            System.out.println("Enter new email:");
-					            String NA = scanner.nextLine();
-					            u.set_email(NA);
-					            userFound = true;
-					            break;
-					        }
-					    }
-
-					    if (!userFound) {
-					        for (User m : A.instructor) {
-					            if (m.get_numbphone().equals(N)) {
-					                System.out.println("Enter new email:");
-					                String NA = scanner.nextLine();
-					                m.set_email(NA);
-					                userFound = true;
-					                break;
-					            }
-					        }
-					    }
-
-					    if (!userFound) {
-					        System.out.println("User with this phone number not found.");
-					    }
-					}
-				 
-				 break;
-				 
-				 case 3:{
-					 System.out.println("Enter the phone number of the user you want to update:");
-					  scanner.nextLine();
-					    String N = scanner.nextLine();
-					    boolean userFound = false;
-
-					    for (User u : A.client) {
-					        if (u.get_numbphone().equals(N)) {
-					            System.out.println("Enter new pass:");
-					            String NA = scanner.nextLine();
-					            u.set_pass(NA);
-					            userFound = true;
-					            break;
-					        }
-					    }
-
-					    if (!userFound) {
-					        for (User m : A.instructor) {
-					            if (m.get_numbphone().equals(N)) {
-					                System.out.println("Enter new pass:");
-					                String NA = scanner.nextLine();
-					                m.set_pass(NA);
-					                userFound = true;
-					                break;
-					            }
-					        }
-					    }
-
-					    if (!userFound) {
-					        System.out.println("User with this phone number not found.");
-					    }
-					}
-				  
-				 
-				 break;
-				 
-				 case 4:{
-					 System.out.println("Enter the phone number of the user you want to update:");
-					  scanner.nextLine();
-					    String N = scanner.nextLine();
-					    boolean userFound = false;
-
-					    for (User u : A.client) {
-					        if (u.get_numbphone().equals(N)) {
-					            System.out.println("Enter new phone number :");
-					            String NA = scanner.nextLine();
-					            u.set_numbphone(NA);
-					            userFound = true;
-					            break;
-					        }
-					    }
-
-					    if (!userFound) {
-					        for (User m : A.instructor) {
-					            if (m.get_numbphone().equals(N)) {
-					                System.out.println("Enter new phone number:");
-					                String NA = scanner.nextLine();         
-					                m.set_numbphone(NA);
-					                userFound = true;
-					                break;
-					            }
-					        }
-					    }
-
-					    if (!userFound) {
-					        System.out.println("User with this phone number not found.");
-					    }
-					}
-				  
-				 
-				 break; 
-				 
-				 case 5:{
-					 System.out.println("Enter the phone number of the user you want to update:");
-					  scanner.nextLine();
-					    String N = scanner.nextLine();
-					    boolean userFound = false;
-
-					    for (User u : A.client) {
-					        if (u.get_numbphone().equals(N)) {
-					            System.out.println("Enter new age:");
-					            int NA = scanner.nextInt();
-					            u.set_age(NA);
-					            userFound = true;
-					            break;
-					        }
-					    }
-
-					    if (!userFound) {
-					        for (User m : A.instructor) {
-					            if (m.get_numbphone().equals(N)) {
-					                System.out.println("Enter new age:");
-					                int NA = scanner.nextInt();
-						            m.set_age(NA);
-					                userFound = true;
-					                break;
-					            }
-					        }
-					    }
-
-					    if (!userFound) {
-					        System.out.println("User with this phone number not found.");
-					    }
-					}
-				  
-				 }
 			 }
-				 break; 
+			 break;
 				 
-				 
-				 case 6:{
-					 
-					 System.out.println("Enter the phone number of the user you want to update:");
-					  scanner.nextLine();
-					    String N = scanner.nextLine();
-					    boolean userFound = false;
-
-					    for (User u : A.client) {
-					        if (u.get_numbphone().equals(N)) {
-					            System.out.println("Enter new type:");
-					            String NA = scanner.nextLine();
-					            u.set_type(NA);
-					            userFound = true;
-					            break;
-					        }
-					    }
-
-					    if (!userFound) {
-					        for (User m : A.instructor) {
-					            if (m.get_numbphone().equals(N)) {
-					                System.out.println("Enter new type:");
-					                String NA = scanner.nextLine();
-						            m.set_type(NA);
-					                userFound = true;
-					                break;
-					            }
-					        }
-					    }
-
-					    if (!userFound) {
-					        System.out.println("User with this phone number not found.");
-					    }
-					}
-				  
-				 
-				 break; 
-				 
-					 
+			 case 6 :{
+				 System.out.println("Enter the email of instructor that you want to approve them:");
+				  scanner.nextLine();
+				    String N = scanner.nextLine();
+				    A.approve_instructor(N);
+			 }
+			break;
+			
 			 case 7:{
 				 activity ac=new activity();
 					
@@ -565,7 +913,7 @@ public static void admin_menu() {
 			 }
 			 break;
 			 case 26:{
-				 
+				 apply_sign_in.sign_in(A);
 			 }
 			 break;
 			 
@@ -616,52 +964,9 @@ public static void admin_menu() {
 		f.set_weight(80);
 		
 		N.add_userFatnessProgram(f);
-		
-		
-   Scanner scanner=new Scanner(System.in);   
-	sign_in s=new sign_in();	
-	System.out.println("Sign in page --->");
-	System.out.println("Enter your username");
-	String nameuser=scanner.nextLine();
-	System.out.println("Enter your password");
-	String passsuser=scanner.nextLine();
-	s.set_username(nameuser);
-	s.set_pass(passsuser);
-	s.sign_in(nameuser,passsuser, A);
-	
-	
-	
-	 if(A.msg.equals("Admin logged in successfully")) {
-		 admin_menu();
-	
-	 }
-	
-	 else if(A.msg.equals("Wrong pass_A. Try again")) {
-		 System.out.println("Enter your password");
-			 passsuser=scanner.nextLine();
-			s.set_username(nameuser);
-			s.set_pass(passsuser);
-			s.sign_in(nameuser,passsuser, A);
-			 if(A.msg.equals("Admin logged in successfully")) {
-				 admin_menu();
-				
-				 }
-	 }
-	 
-	 else if(A.msg.equals("Wrong email_A. Try again")) {
-		 System.out.println("Enter your username");
-		  nameuser=scanner.nextLine();
-			s.set_username(nameuser);
-			s.set_pass(passsuser);
-			s.sign_in(nameuser,passsuser, A);
-			 if(A.msg.equals("Admin logged in successfully")) {
-				 admin_menu();
-				
-				 }
-	 }
-
+		apply_sign_in.sign_in(A);
+	System.out.println(A.msg);
 	}
 	 
-	 
-	 
 	 }
+*/

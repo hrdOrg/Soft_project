@@ -17,6 +17,76 @@
 ## (Comments)
 #Sample Feature Definition Template
 Feature: Admin User Management
+
+
+Scenario: fill user information
+Given I WANT TO FIIL USER INFO
+When I CHOICE FILLINFO
+Then THE INFO HASS BEEN FILLED
+
+
+Scenario: update user information1
+Given I WANT TO UPDATE 
+When I CLIC to UPDATE1
+Then THE NAME must BE updated
+
+Scenario: update user information2
+Given I WANT TO UPDATE 
+When I CLIC to UPDATE2
+Then THE  EmAIL must BE updated
+
+Scenario: update user information3
+Given I WANT TO UPDATE
+When I CLIC to UPDATE3
+Then THE  PaSs must BE updated
+
+
+
+Scenario: update user information5
+Given I WANT TO UPDATE 
+When I CLIC to UPDATE5
+Then THE  AgE must BE updated
+
+Scenario: update user information6
+Given I WANT TO UPDATE 
+When I CLIC to UPDATE6
+Then THE  TyPe  must BE updated
+
+
+Scenario: update user informationIN
+Given I WANT TO UPDATE INSTRUCTOR
+When I CLIC to UPDATE instructor1
+Then THE NAME must BE updated22
+
+Scenario: update user informationIN
+Given I WANT TO UPDATE INSTRUCTOR
+When I CLIC to UPDATE instructor2
+Then THE  EmAIL must BE updated22
+
+Scenario: update user informationIN
+Given I WANT TO UPDATE INSTRUCTOR
+When I CLIC to UPDATE instructor3
+Then THE  PaSs must BE updated22
+
+
+
+Scenario: update user informationIN
+Given I WANT TO UPDATE INSTRUCTOR
+When I CLIC to UPDATE instructor5
+Then THE  AgE must BE updated22
+
+Scenario: update user informationIN
+Given I WANT TO UPDATE INSTRUCTOR
+When I CLIC to UPDATE instructor6
+Then THE  TyPe  must BE updated22
+
+
+Scenario: user not in array
+Given I w TO UPDATE 
+When I CLIC to UPDATE instructor7
+Then THE must BE notFounD
+
+
 Scenario: Add accounts for clinet
 Given I am logged in as an admin
 When  when i clic in add account 
@@ -42,7 +112,7 @@ Then it will be dispplay "added instrctor  successfuly "
  Scenario: Fail to Add a User with an Existing numberphone
   Given I am logged in as an admin
   And the numberphone "0595597868" already exists
-  When i clic in add account  
+  When i clic in add account2  
   And  i enter "dania" as username 
   And i enter 21 as age
   And i enter "dania@gmail.com" as email
@@ -53,70 +123,70 @@ Then it will be dispplay "added instrctor  successfuly "
   
    Scenario: Fail to Add a User with Missing Required Fields
     Given I am logged in as an admin
-    When i clic in add account  
+    When i clic in add account2  
     And  i enter "sara" as username 
     And i enter 25 as age
     And i enter "sara@gmail.com" as email
     And I leave the password field empty
     And i enter "0594497868" as numberphone
     And i enter "instuctor" as type of regester
-    Then I should see "Password is required. Please enter a password."
+    Then I should see "miss info"
  
   Scenario: Fail to Add a User with Missing Required Fields
     Given I am logged in as an admin
-    When i clic in add account  
+    When i clic in add account2  
     And  I leave the username field empty 
     And i enter 29 as age
     And i enter "lara@gmail.com" as email
     And i enter "12345" as password
     And i enter "05955977868" as numberphone
     And i enter "instuctor" as type of regester
-    Then I should see "username is required. Please enter a username."
+    Then I should see "miss info"
    
     Scenario: Fail to Add a User with Missing Required Fields
     Given I am logged in as an admin
-    When i clic in add account  
+    When i clic in add account2  
     And  i enter "soad" as username
     And  I leave the age field empty 
     And i enter "soad@gmail.com" as email
     And i enter "12345" as password
     And i enter "05955977868" as numberphone
     And i enter "instuctor" as type of regester
-    Then I should see " age is required. Please enter age ." 
+    Then I should see "miss info"
     
      Scenario: Fail to Add a User with Missing Required Fields
     Given I am logged in as an admin
-    When i clic in add account  
+    When i clic in add account2  
     And  i enter "gana" as username
     And  i enter 30 as age
     And  I leave the email field empty 
     And i enter "12345" as password
     And i enter "05955977868" as numberphone
     And i enter "instuctor" as type of regester
-    Then I should see "email is required. Please enter an email." 
+    Then I should see "miss info" 
     
  
      Scenario: Fail to Add a User with Missing Required Fields
     Given I am logged in as an admin
-    When i clic in add account  
+    When i clic in add account2  
     And  i enter "masa" as username
     And  i enter 22 as age
     And  i enter "masa@gmail.com" as email
     And i enter "12345" as password
     And  i leave the phonenumber field empty 
     And i enter "instuctor" as type of regester
-    Then I should see "phonenumber is required. Please enter an phonenumber." 
+    Then I should see "miss info" 
  
   Scenario: Fail to Add a User with Missing Required Fields
     Given I am logged in as an admin
-    When i clic in add account  
+    When i clic in add account2  
     And  i enter "tala" as username
     And  i enter 20 as age
     And  i enter "tala@gmail.com" as email
     And i enter "123459" as password
     And  i enter "05955933368" as numberphone
     And i leave the type field empty
-    Then I should see "type is required. Please enter the type." 
+    Then I should see "miss info" 
    
   Scenario: delete account 
   Given I am logged in as an admin

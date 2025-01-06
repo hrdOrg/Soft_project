@@ -37,7 +37,7 @@ for(User c:a.client) {
 	for(User I:a.instructor) {
 		if(I.get_email().equals(name) && I.get_pass().equals(pass)) {
 			a.msg="instructor logged in successfully";
-			System.out.println("instuctor logged in successfully");
+			System.out.println("instructor logged in successfully");
 			return;
 		}
 		else if (!I.get_email().equals(name) && I.get_pass().equals(pass)) {
