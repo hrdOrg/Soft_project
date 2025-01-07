@@ -41,15 +41,10 @@ Feature: client in fittness project
     When thej3j366 client check their profile with personal details like "fittness goals"
     Then the87%$h system should return the requierd personal details like "fittness goals"   
     
-    Scenario: Client want to check thier profile
+   Scenario: Client want to check thier profile
     Given the client is 76hg#$ logged in
     When the client check their jkhf7w65 profile with personal details like "fittness goals"
     Then the system should return the jf7& requierd personal details like "fittness goals"  
-    
-    Scenario: Client want to check thier profile
-    Given the client56y is logged in
-    When the client check their hhg734 profile with personal details like "dietary"
-    Then the system should return fg&*^%j the requierd personal details like "dietary"   
     
     Scenario: Client customizes their profile
     Given THE1 client sdf34 is logged in
