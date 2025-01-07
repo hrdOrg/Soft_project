@@ -8,8 +8,8 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-   sonarqube:
-    name: SonarQube
+  build:
+    name: Build and Analyze
     runs-on: ubuntu-latest
 
     steps:
